@@ -48,6 +48,26 @@ and open the template in the editor.
     transition: all 0.3s ease-in-out;
 }
 
+.pic-for-cis {
+    width: 160px !important;
+    height: 160px !important;
+    float: left;
+    padding: 0;
+    margin-top: 30px !important;
+    overflow: hidden !important;
+    border: 3px solid #eee !important;
+    margin-left: 15px !important;
+    background: #333;
+    text-align: center;
+    line-height: 160px;
+    color: #fff !important;
+    font-size: 2em;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
 .site-name {
     color: #fff;
     font-size: 2.4em;
@@ -414,6 +434,7 @@ and open the template in the editor.
     text-decoration: none;
     color: #000;
     padding: 4.7em 1em 0em;
+    white-space: nowrap;
 }
 
 .main-dashboard a.thumbnail{
@@ -443,7 +464,7 @@ ul.patientDetails {
 .patient {
     color: #fff;
     margin-left: 225px;
-    margin-top: 70px;
+    margin-top: 60px;
     padding-right: 35px;
 }
 
@@ -551,4 +572,26 @@ a:focus, a:hover {
     color: #575a5b;
     font-weight: 700;
     letter-spacing: 0.01em;
+}
+
+/*CIS*/
+ul.soap-content a{float:left;margin:5px;letter-spacing: 0.05em;}
+ul.soap-content>li>a:hover{background:#2196F3;color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.26);transition:.35s ease-in-out;}
+ul.soap-content>li>a:focus{background:none;color:#2196F3;}
+.cis-tab{margin-bottom:20px;}
+.sub-soap>li>a{width:inherit;}
+.sub-soap>li>a{background:#2196F3;border:1px solid #2196F3;float:left;margin:5px;overflow:hidden;padding:5px;border-radius:4px;width:auto;font-size:12px;font-weight:500;color:#fff;}
+.sub-soap>li>a:hover{background:#2196F3;color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.26);transition:.35s ease-in-out;}
+.sub-soap>li{margin:0 !important;}
+.cis-menu>li>a{font-size:12px;color:#fff;font-weight:400;text-transform:uppercase;}
+.none{display:none;}
+
+.btn-consultation {
+    color: #fff;
+    background-color: #FE9D2A;
+    border-color: #f78f15;
+}
+
+.m-t-30 {
+    margin-top: 30px;
 }

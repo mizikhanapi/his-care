@@ -159,16 +159,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- header -->
         <script src="libraries/jquery.min.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link href="../assets/css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../assets/css/_all-skins.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../assets/css/tabsDashboard.css" rel="stylesheet" type="text/css"/>
-        <link href="../assets/css/care.css" rel="stylesheet" type="text/css"/>
-        <link href="../assets/css/iconsmind.css" rel="stylesheet" type="text/css"/>
         <%@include file = "../assets/header.html" %>
+        <link href="../assets/css/iconsmind.css" rel="stylesheet" type="text/css"/>
         <!-- header -->
 
-        
+
 
     </head>
 
@@ -176,379 +171,266 @@
         <div class="wrapper">
             <%@include file = "libraries/topMenus-dashboard.html" %><!-- menu top -->
             <div class="content-wrapper">
-                <!-- profile start -->
-                <div class="twPc-div">&nbsp;</div>
-                <nav class="navbar navbar-default" style="height: 75px;">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <div class="navbar-brands profile-userpic">
-                                <img src="<%= my_1_gamba%>">
-                            </div>
-                            <span class="site-name" id="welcomeMain"></span>
-                            <span class="site-description">System Admin</span>
-                        </div>
-
-                        <div class="collapse navbar-collapse" id="mainNav" >
-                            <ul class="nav main-menu navbar-nav">
-                                <li><a href="#" style="text-align: center;"><span class="p-label" id="pIC">123</span>Total Patient </a></a></li>
-                                <li><a href="#" style="text-align: center;"><span class="p-label" id="pIC">43</span>Patient Consult</a></a></li>
-                                <li><a href="#" style="text-align: center;"><span class="p-label" id="pIC">23</span>Total Discharge</a></a></li>
-                            </ul>
-
-                            <ul class="nav  navbar-nav navbar-right">
-                                <li><button class="btn btn-default" style="margin-top: 18px;"><i class="fa fa-bars"></i> Quick Menus</button></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <!-- profile end -->
                 <div class="container m-scene">
-                    <div class="tabbable-panel">
-                        <div class="tabbable-line">
-                            <ul class="nav nav-pills ">
-                                <li class="active">
-                                    <a href="#tab_default_1" data-toggle="tab">
-                                        Modules </a>
-                                </li>
-<!--                                <li>
-                                    <a href="#tab_default_2" data-toggle="tab">
-                                        Queue List </a>
-                                </li>
-                                <li>
-                                    <a href="#tab_default_3" data-toggle="tab">
-                                        Report </a>
-                                </li>-->
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab_default_1">
-                                    <!-- main -->		
-                                    <div class="col-md-12 main-dashboard">
-                                        <div class="row">
-                                            <%                            if (mod01) {
-                                            %>
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../SystemAdmin/Lookup" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Gears" aria-hidden="true" style="color: #FDC671;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        System Administration
-                                                    </div>
-                                                </a>
-                                            </div>
-
-                                            <%
-                                                }
-
-                                                if (mod03) {
-                                            %>
-
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../Registration/" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Monitor-Vertical" aria-hidden="true" style="color: #c0a16b;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Medical Kiosk
-                                                    </div>
-                                                </a>
-                                            </div>
-
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../PMS/index.jsp" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Add-User" aria-hidden="true" style="color: #17A086;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Outpatient Management
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <%
-                                                }
-
-                                                if (mod02) {
-                                            %>
-
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../CIS/" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Stethoscope" aria-hidden="true" style="color: #E84C3D;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Patient Consultation
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <%
-                                                }
-
-                                                if (mod04) {
-                                            %>
-
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../PIS/Dispense_Drug_Order" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Medicine-2" aria-hidden="true" style="color: #9A67A0;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Pharmacy Info System
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <%
-                                                }
-
-                                                if (mod05) {
-                                            %>
-
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../LIS/Order_list" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Flask" aria-hidden="true" style="color: #F26353;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Laboratory Info System
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <%
-                                                }
-
-                                                if (mod06) {
-                                            %>
-
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../RIS/HIS060001.jsp" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Radioactive" aria-hidden="true" style="color: #2A80B9;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Radiology Information System
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <%
-                                                }
-
-                                                if (mod07) {
-                                            %>
-
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../ADT/HIS070001.jsp" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Hospital" aria-hidden="true" style="color: #DE3975;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Inpatient Management
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <%
-                                                }
-
-                                                if (mod08) {
-                                            %>
-
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../Billing/HIS080001.jsp" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Billing" aria-hidden="true" style="color: #34A8DA;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Billing System
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <%
-                                                }
-
-                                                if (mod03) {
-                                            %>
-
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../Appointment/" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Calendar-4" aria-hidden="true" style="color: #33B3AA;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Patient Appointment
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <%
-                                                }
-
-                                                if (mod11) {
-                                            %>
-
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../Report/MainMenu.jsp" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Monitor-Analytics" aria-hidden="true" style="color: #00dd1c;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Reports
-                                                    </div>
-                                                </a>
-                                            </div>
-
-                                            <%
-                                                }
-
-                                                if (mod21) {
-                                            %>
-
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../CallingSystem" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Support" aria-hidden="true" style="color: #FFB74D;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-
-                                                        Calling System
-                                                    </div>
-                                                </a>
-                                            </div>
-
-                                            <%
-                                                }
-
-                                                if (mod18) {
-                                            %>
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../POM/" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Approved-Window" aria-hidden="true" style="color: orange;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Procedure Order Management
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <%
-                                                }//end if mod18
-
-                                                if (mod19) {
-                                            %>
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../OperationTheater/index.jsp" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Medical-Sign" aria-hidden="true" style="color:#0000A0;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Operation Theater
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <%
-                                                }//end if mod19
-
-                                                if (mod20) {
-                                            %>                        
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../QMS/" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Mens" aria-hidden="true" style="color:#ab47bc;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Queue Management
-                                                    </div>
-                                                </a>
-                                            </div>                        
-                                            <%
-                                                }// end if mod20
-
-                                                if (mod22) {
-                                            %>                        
-                                            <div class="col-xs-6 col-sm-6 col-md-4">
-                                                <a href="../SMS/Distribution_Stock_Order" class="thumbnail">
-                                                    <span class="icon_contain">
-                                                        <i class="iconsmind-Box-withFolders" aria-hidden="true" style="color:#777620;font-size: 4em;"></i>
-                                                    </span>
-                                                    <div class="kotak text-center">
-                                                        Stock Management
-                                                    </div>
-                                                </a>
-                                            </div>                        
-                                            <%
-                                                }// end if mod22
-                                            %>
-
-                                        </div>
-                                    </div>   
-                                </div>
-<!--                                <div class="tab-pane" id="tab_default_2">
-                                    <div class="col-md-12 thumbnail">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>No.</th>
-                                                    <th>Name</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1.</td>
-                                                    <td>Mizi Khanapi</td>
-                                                    <td><button class="btn btn-default">Consult</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2.</td>
-                                                    <td>Mizi Khanapi</td>
-                                                    <td><button class="btn btn-default">Consult</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3.</td>
-                                                    <td>Mizi Khanapi</td>
-                                                    <td><button class="btn btn-default">Consult</button></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                    <div class="col-md-12 main-dashboard m-t-30">
+                        <div class="row">
+                            <%                            if (mod01) {
+                            %>
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../SystemAdmin/Lookup" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Gears" aria-hidden="true" style="color: #FDC671;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        System Administration
                                     </div>
-                                </div>
-                                
-                                <div class="tab-pane" id="tab_default_3">
-                                    3
-                                </div>-->
+                                </a>
                             </div>
+
+                            <%
+                                }
+
+                                if (mod03) {
+                            %>
+
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../Registration/" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Monitor-Vertical" aria-hidden="true" style="color: #c0a16b;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Medical Kiosk
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../PMS/index.jsp" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Add-User" aria-hidden="true" style="color: #17A086;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Outpatient Management
+                                    </div>
+                                </a>
+                            </div>
+                            <%
+                                }
+
+                                if (mod02) {
+                            %>
+
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../CIS/" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Stethoscope" aria-hidden="true" style="color: #E84C3D;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Patient Consultation
+                                    </div>
+                                </a>
+                            </div>
+                            <%
+                                }
+
+                                if (mod04) {
+                            %>
+
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../PIS/Dispense_Drug_Order" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Medicine-2" aria-hidden="true" style="color: #9A67A0;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Pharmacy Info System
+                                    </div>
+                                </a>
+                            </div>
+                            <%
+                                }
+
+                                if (mod05) {
+                            %>
+
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../LIS/Order_list" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Flask" aria-hidden="true" style="color: #F26353;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Laboratory Info System
+                                    </div>
+                                </a>
+                            </div>
+                            <%
+                                }
+
+                                if (mod06) {
+                            %>
+
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../RIS/HIS060001.jsp" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Radioactive" aria-hidden="true" style="color: #2A80B9;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Radiology Information System
+                                    </div>
+                                </a>
+                            </div>
+                            <%
+                                }
+
+                                if (mod07) {
+                            %>
+
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../ADT/HIS070001.jsp" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Hospital" aria-hidden="true" style="color: #DE3975;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Inpatient Management
+                                    </div>
+                                </a>
+                            </div>
+                            <%
+                                }
+
+                                if (mod08) {
+                            %>
+
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../Billing/HIS080001.jsp" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Billing" aria-hidden="true" style="color: #34A8DA;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Billing System
+                                    </div>
+                                </a>
+                            </div>
+                            <%
+                                }
+
+                                if (mod03) {
+                            %>
+
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../Appointment/" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Calendar-4" aria-hidden="true" style="color: #33B3AA;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Patient Appointment
+                                    </div>
+                                </a>
+                            </div>
+                            <%
+                                }
+
+                                if (mod11) {
+                            %>
+
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../Report/MainMenu.jsp" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Monitor-Analytics" aria-hidden="true" style="color: #00dd1c;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Reports
+                                    </div>
+                                </a>
+                            </div>
+
+                            <%
+                                }
+
+                                if (mod21) {
+                            %>
+
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../CallingSystem" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Support" aria-hidden="true" style="color: #FFB74D;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+
+                                        Calling System
+                                    </div>
+                                </a>
+                            </div>
+
+                            <%
+                                }
+
+                                if (mod18) {
+                            %>
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../POM/" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Approved-Window" aria-hidden="true" style="color: orange;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Procedure Order Management
+                                    </div>
+                                </a>
+                            </div>
+                            <%
+                                }//end if mod18
+
+                                if (mod19) {
+                            %>
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../OperationTheater/index.jsp" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Medical-Sign" aria-hidden="true" style="color:#0000A0;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Operation Theater
+                                    </div>
+                                </a>
+                            </div>
+                            <%
+                                }//end if mod19
+
+                                if (mod20) {
+                            %>                        
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../QMS/" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Mens" aria-hidden="true" style="color:#ab47bc;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Queue Management
+                                    </div>
+                                </a>
+                            </div>                        
+                            <%
+                                }// end if mod20
+
+                                if (mod22) {
+                            %>                        
+                            <div class="col-xs-6 col-sm-6 col-md-3">
+                                <a href="../SMS/Distribution_Stock_Order" class="thumbnail">
+                                    <span class="icon_contain">
+                                        <i class="iconsmind-Box-withFolders" aria-hidden="true" style="color:#777620;font-size: 4em;"></i>
+                                    </span>
+                                    <div class="kotak text-center">
+                                        Stock Management
+                                    </div>
+                                </a>
+                            </div>                        
+                            <%
+                                }// end if mod22
+                            %>
+
                         </div>
-                    </div> 
+                    </div>   
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
         <div class="loading"></div>
-
-
-
-        <div class="container-fluid m-scene">
-            <div class="row">
-
-
-
-
-
-            </div>
-            <!-- main -->		
-
-        </div>
 
 
         <%@include file="libraries/script.html"%>
@@ -567,13 +449,13 @@
                         $('#welcome').text(data.trim());
                         console.log(data);
                     }});
-                
+
                 $.ajax({
                     type: 'POST',
                     url: "getGambo.jsp",
                     success: function (data, textStatus, jqXHR) {
-                        $('.gambarUser').attr("src",data);
-                        
+                        $('.gambarUser').attr("src", data);
+
                         console.log(data);
                     }});
 
@@ -583,8 +465,7 @@
     </body>
 
 </html>
-<%
-    }//end try
+<%    }//end try
     catch (Exception e) {
         System.out.println("Entering dashboard");
         e.printStackTrace();
