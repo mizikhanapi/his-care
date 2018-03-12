@@ -18,8 +18,8 @@
                     </div>
                 </div>
 
-                <ul class="nav navbar-nav navbar-right logout" style="">
-                    <li><a href="../Entrance/destroySession.jsp"  title="Log Out"><i class=" fa fa-power-off"></i></a></li>
+                <ul class="nav navbar-nav navbar-right " style="margin-right: 15px;">
+                    <%@include file="../../assets/side_profile.jsp" %>
                 </ul>
 
             </div>

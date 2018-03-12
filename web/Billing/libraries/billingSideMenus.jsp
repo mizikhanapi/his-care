@@ -10,15 +10,16 @@
     <div class="brand"></div>
     <!-- logo -->
     <div class="logo">
-        Welcome to <span>iHIS</span>
+        <img src="../assets/img/hiscare-icon-web.svg">
+        <!--        Welcome to <span>iHIS</span>-->
     </div>
     <!-- logo -->
 
     <!-- profile Sidebar -->
-    <%@include file="../../assets/side_profile.jsp" %>
-    <hr/>
+    <%//@include file="../../assets/side_profile.jsp" %>
 
     <ul id="menu-content" class="nav nav-sidebar">
+        <li class="nav-title">Navigation</li>
         <!-- // menu tanpa dropdown -->
         <li><a href="HIS080001.jsp"><i class="fa fa-usd fa-lg" aria-hidden="true"></i>Billing</a></li>
         <li><a href="HIS080002.jsp"><i class="fa fa-credit-card fa-lg " aria-hidden="true" ></i>Manage Bills</a></li>

@@ -219,8 +219,15 @@ $('#RNO_div_btnAdd_or_update').on('click', '#RNO_btnAdd', function () {
         instruction = instruction.replace(/'/g, "\\\'").replace(/"/g, "\\\"");
         var arrData = procedure.split('|');
         procedure = arrData[0].trim();
-        var pro_name = arrData[1].trim();
+        var pro_name = "";
         
+        try{
+            pro_name = arrData[1].trim();
+        }catch (e){
+            bootbox.alert("Please choose existing procedure!");
+            $('#RNO_proName').val("");
+            return false;
+        }
         var epDate = $('#posEpDate').val();
         
 
@@ -401,8 +408,8 @@ $('#PR_btnSubmit').on('click', function () {
                 }
         );
     }
-    else if(duration === ''){
-         bootbox.alert('Please key in the time taken to complete the procedure in minutes.',
+    else if(duration === '' || parseInt(duration) > 999999){
+         bootbox.alert('Please key in the time taken to complete the procedure in minutes. Value must be between 0 and 999999',
                 function () {
                     $('#PR_duration').focus();
                 }
@@ -424,7 +431,7 @@ $('#PR_btnSubmit').on('click', function () {
             outcome: outcome
         };
         
-        $('#modal_prepareResult').modal('hide');
+        //$('#modal_prepareResult').modal('hide');
         createScreenLoading();
         
         $.ajax({
@@ -434,6 +441,8 @@ $('#PR_btnSubmit').on('click', function () {
             success: function (data, textStatus, jqXHR) {
                 if(data.trim() === 'success'){
                     bootbox.alert('Report is submitted.');
+                    $('#modal_prepareResult').modal('hide');
+                    $('#PR_form')[0].reset();
                     loadOrderDetailList(orderNo);
                     
                 }else if(data.trim() === 'fail'){

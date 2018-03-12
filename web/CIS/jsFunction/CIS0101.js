@@ -63,17 +63,19 @@ function initialisedModalSearch(modal_id,personalised_id,modal_name,modal_name2)
 
 function initialiseRadioPersonalised(code,field){
         $('input[name="rCISSub'+code+'SearchType"]').on('click',function(){
-        var type = $(this).val();
-        if(type === 'CT'){
-            $("#btnCISSub"+code+"AddPersonalised").show();
-            $("#tCISSub"+field+"SearchPersonalised-flexdatalist").hide();
-            $("#tCISSub"+field+"Search-flexdatalist").show();
-        } else{
-            $("#tCISSub"+field+"SearchPersonalised-flexdatalist").show();
-            $("#tCISSub"+field+"Search-flexdatalist").hide();
-             $("#btnCISSub"+code+"AddPersonalised").hide();
-        }
-    });
+            var type = $(this).val();
+            if(type === 'CT'){
+                $("#btnCISSub"+code+"AddPersonalised").show();
+                $("#tCISSub"+field+"SearchPersonalised-flexdatalist").hide();
+                $("#tCISSub"+field+"Search-flexdatalist").show();
+            } else{
+                $("#tCISSub"+field+"SearchPersonalised-flexdatalist").show();
+                $("#tCISSub"+field+"Search-flexdatalist").hide();
+                 $("#btnCISSub"+code+"AddPersonalised").hide();
+            }       
+        });
+        // to ensure correct search field is shown when during open and close modal
+        $('input[name="rCISSub'+code+'SearchType"]').click();
     
     $('input[name="rCISSub'+code+'SearchType_update"]').on('click',function(){
         var type = $(this).val();
@@ -93,14 +95,14 @@ function initialiseRadioPersonalised(code,field){
         e.preventDefault();
         var search_by = $('input[name="rCISSub'+code+'SearchType"]').val();
         var term_name = term_name = $("#tCISSub"+field+"Search").val();
-        ;
+        
         var term_code = getDate();
         var code_type = $("#tCISSUB"+code+"CodeType").val();
         var dataPersonalised = {
             term_name: term_name,
             term_code: term_code,
             code_type: code_type
-        }
+        };
         addPersonalisedTerm(dataPersonalised);
     });
 }

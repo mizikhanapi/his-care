@@ -5,16 +5,14 @@
     <div class="brand"></div>
     <!-- logo -->
     <div class="logo">
-        Welcome to <span>iHIS</span>
+        <img src="../assets/img/hiscare-icon-web.svg">
+        <!--        Welcome to <span>iHIS</span>-->
     </div>
     <!-- logo -->
 
-    <!-- profile Sidebar -->
-     <%@include file="../../assets/side_profile.jsp" %>
-    <hr/>
-
     <ul id="menu-content" class="nav nav-sidebar">
         <!-- // menu tanpa dropdown -->
+        <li class="nav-title">Navigation</li>
         <li>
             <a type="button" data-toggle="modal" data-target="#appointmentModal" id="appointment"> 
                 <i class="fa fa-calendar fa-lg"></i> Appointment List
@@ -23,6 +21,11 @@
         <li>
             <a type="button" data-toggle="modal" data-target="#queueModal" id="queue">
                 <i class="fa fa-users fa-lg"></i> List Of Queue
+            </a>
+        </li>
+        <li>
+            <a data-toggle="modal" data-target="#referralModal" id="btnReferralModal">
+                <i class="fa fa-envelope fa-lg"></i> Referral List
             </a>
         </li>
 

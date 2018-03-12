@@ -24,6 +24,7 @@
         <script src="libraries/lib/js/bootbox.min.js"></script>
         <script src="libraries/lib/js/search/searchPatient.js" type="text/javascript"></script>
         <script src="../assets/js/modernizr.js" type="text/javascript"></script>
+        <script src="../assets/js/webcam.js" type="text/javascript"></script>
         <%@include file = "../assets/header.html" %>
 
         <!-- header -->
@@ -132,6 +133,7 @@
         <div  id="modalSaya"><%@include file = "AppointmentModal.jsp" %></div>
         <div id="modalSaya2"><%@include file = "QueueModal.jsp" %></div>
         <div id="modalQueueNumberSaya"><%@include file = "queueNumberModal.jsp" %></div>
+        <div id="modalReferralSaya"><%@include file = "ReferralModal.jsp" %></div>
 
 
 

@@ -14,9 +14,11 @@
  
     String pmiNo = request.getParameter("pmiNo");
     String date = request.getParameter("date");
-    String hfcCd = request.getParameter("hfcCd");
-     String username = request.getParameter("canceled_by");
-    String canceledReason = request.getParameter("canceledReason");
+    String hfcCd = request.getParameter("hfc");
+    String discipline = request.getParameter("discipline");
+    String subdiscipline = request.getParameter("subdiscipline");
+     String username = session.getAttribute("USER_NAME").toString();
+    String canceledReason = request.getParameter("reason");
     
 //    out.print(username);
 //    out.print(e27);
@@ -25,18 +27,21 @@
 //    out.print(canceledReason);
     
             RMIConnector rmic = new RMIConnector();
-            String sqlUpdate = "UPDATE pms_appointment "
-                    + "SET status='canceled', canceled_by='" + username + "', canceled_date=now(), canceled_reason='" + canceledReason + "' "
-                    + "WHERE pmi_no='" + pmiNo + "' AND hfc_cd='" + hfcCd + "' AND DATE(appointment_date)='" + date + "'";
-            boolean isUpdate = rmic.setQuerySQL(Conn.HOST, Conn.PORT, sqlUpdate);
+//            String sqlUpdate = "UPDATE pms_appointment "
+//                    + "SET status='canceled', canceled_by='" + username + "', canceled_date=now(), canceled_reason='" + canceledReason + "' "
+//                    + "WHERE pmi_no='" + pmiNo + "' AND hfc_cd='" + hfcCd + "' AND DATE(appointment_date)='" + date + "' AND discipline = '"+discipline+"' AND subdiscipline = '"+subdiscipline+"'";
+                
+String sqlUpdate = "UPDATE pms_appointment SET `status` = 'inactive' WHERE pmi_no = '"+pmiNo+"' AND hfc_cd = '"+hfcCd+"' AND appointment_date = '"+date+"';";
+boolean isUpdate = rmic.setQuerySQL(Conn.HOST, Conn.PORT, sqlUpdate);
             
             if(isUpdate)
             {
                 out.print("success");
+               
             }
             else
             {
-                out.print(sqlUpdate);
+                out.print("Error");
             }
 
  

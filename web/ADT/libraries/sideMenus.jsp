@@ -5,18 +5,19 @@
     <div class="brand"></div>
     <!-- logo -->
     <div class="logo">
-        Welcome to <span>iHIS</span>
+        <img src="../assets/img/hiscare-icon-web.svg">
+        <!--        Welcome to <span>iHIS</span>-->
     </div>
     <!-- logo -->
 
     <!-- profile Sidebar -->
-    <%@include file="../../assets/side_profile.jsp" %>
-    <hr/>
+    <%//@include file="../../assets/side_profile.jsp" %>
     <!-- profile Sidebar -->
 
 
 
     <ul id="menu-content" class="nav nav-sidebar">
+        <li class="nav-title">Navigation</li>
         <!-- // menu tanpa dropdown -->
         <li>
             <a  href="HIS070001.jsp" >
@@ -28,8 +29,8 @@
                 <i class="fa fa-users fa-lg"></i> List Of Admission
             </a>
         </li>
-          <hr/>
-        
+        <hr/>
+
         <li>
             <a  href="HIS070002.jsp" >
                 <i class="fa fa-briefcase fa-lg"></i> Ward Occupancy
@@ -53,22 +54,22 @@
 
         <li><a  href="HIS070008.jsp" ><i class="fa fa-usd fa-lg"></i> Maintain Hospital Charges </a> </li>
 
-        
-        
-        
+
+
+
         <!-- Menu with dropdown -->
-        <li  data-toggle="collapse" data-target="#Report" class="collapsed active">
+        <li  data-toggle="collapse" data-target="#ReportDrop" class="collapsed active">
             <a href="#"><i class="fa fa-bar-chart fa-lg"></i> Report <span class="arrow"></span></a>
         </li>
-        <ul class="sub-menu collapse" id="Report">
-            <li><a data-toggle="modal" data-target="#" href="Admission_List">List Of Admission</a></li>
-            <li><a data-toggle="modal" data-target="#" href="Discharge_List">List Of Discharge</a></li>
-            <li><a data-toggle="modal" data-target="#" href="Summary_Of_Health_Workers_Workload">Summary Of Health Workers Workload</a></li>
-            <li><a data-toggle="modal" data-target="#" href="List_Of_Ward_Occupancy">List Of Ward Occupancy</a></li>
-           
+        <ul class="sub-menu collapse" id="ReportDrop">
+            <li><a href="Admission_List">List Of Admission</a></li>
+            <li><a href="Discharge_List">List Of Discharge</a></li>
+            <li><a href="Summary_Of_Health_Workers_Workload">Summary Of Health Workers Workload</a></li>
+            <li><a href="List_Of_Ward_Occupancy">List Of Ward Occupancy</a></li>
+
         </ul> 
         <!-- Menu with dropdown -->
-        
+
         <li>
             <a  href="HIS070004.jsp" >
                 <i class="fa fa-bed fa-lg"></i> Bed Booking Master Summary

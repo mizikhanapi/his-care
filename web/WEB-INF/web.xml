@@ -138,17 +138,162 @@
     </servlet-mapping>
     <!--mapping for profile end-->
     
-    <!--mapping for LIS-->
+    
+    <!-- Mapping For LIS Hidding URL Start -->
+
+
+    <!-- Mapping for LIS HIS050001 -->
       
     <servlet>
         <servlet-name>order_list</servlet-name>
-        <jsp-file>/LIS/MainPage.jsp</jsp-file>
+        <jsp-file>/LIS/HIS050001.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>order_list</servlet-name>
         <url-pattern>/LIS/Order_list</url-pattern>
     </servlet-mapping>
     
+    <!-- Mapping for LIS HIS050001 -->
+
+
+    <!-- Mapping for LIS HIS050002 -->
+
+    <servlet>
+        <servlet-name>Receive_Specimen</servlet-name>
+        <jsp-file>/LIS/HIS050002.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Receive_Specimen</servlet-name>
+        <url-pattern>/LIS/Receive_Specimen</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Mapping for LIS HIS050002 -->
+
+
+    <!-- Mapping for LIS HIS050003 -->
+
+    <servlet>
+        <servlet-name>Manage_Test</servlet-name>
+        <jsp-file>/LIS/HIS050003.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Manage_Test</servlet-name>
+        <url-pattern>/LIS/Manage_Test</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Mapping for LIS HIS050003 -->
+
+
+    <!-- Mapping for LIS HIS050004 -->
+    
+    <servlet>
+        <servlet-name>Post_To_Bill</servlet-name>
+        <jsp-file>/LIS/HIS050004.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Post_To_Bill</servlet-name>
+        <url-pattern>/LIS/Post_To_Bill</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Mapping for LIS HIS050004 -->
+
+
+    <!-- Mapping for LIS HIS050005 -->
+
+    <servlet>
+        <servlet-name>Maintain_Test_Code</servlet-name>
+        <jsp-file>/LIS/HIS050005.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Maintain_Test_Code</servlet-name>
+        <url-pattern>/LIS/Maintain_Test_Code</url-pattern>
+    </servlet-mapping>
+
+    <!-- Mapping for LIS HIS050005 -->
+
+
+
+    <!-- Mapping for LIS HIS050007 -->
+
+    <servlet>
+        <servlet-name>Category_Code_List</servlet-name>
+        <jsp-file>/LIS/HIS050007.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Category_Code_List</servlet-name>
+        <url-pattern>/LIS/Category_Code_List</url-pattern>
+    </servlet-mapping>
+
+    <!-- Mapping for LIS HIS050007 -->
+    
+    
+    
+    <!-- Mapping for LIS HIS050008 -->
+
+    <servlet>
+        <servlet-name>Item_Code_List</servlet-name>
+        <jsp-file>/LIS/HIS050008.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Item_Code_List</servlet-name>
+        <url-pattern>/LIS/Item_Code_List</url-pattern>
+    </servlet-mapping>
+
+    <!-- Mapping for LIS HIS050008 -->
+    
+    
+    
+    
+    <!-- Mapping for LIS HIS050009 -->
+
+    <servlet>
+        <servlet-name>Laboratory_Order_List</servlet-name>
+        <jsp-file>/LIS/HIS050009.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Laboratory_Order_List</servlet-name>
+        <url-pattern>/LIS/Laboratory_Order_List</url-pattern>
+    </servlet-mapping>
+
+    <!-- Mapping for LIS HIS050009 -->
+    
+    
+    
+    
+        
+    
+    <!-- Mapping for LIS HIS050010 -->
+
+    <servlet>
+        <servlet-name>Laboratory_Sales_List</servlet-name>
+        <jsp-file>/LIS/HIS050010.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Laboratory_Sales_List</servlet-name>
+        <url-pattern>/LIS/Laboratory_Sales_List</url-pattern>
+    </servlet-mapping>
+
+    <!-- Mapping for LIS HIS050010 -->
+    
+    
+    
+    <!-- Mapping for LIS HIS050006 -->
+
+    <servlet>
+        <servlet-name>Laboratory_Past_Order</servlet-name>
+        <jsp-file>/LIS/HIS050006.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Laboratory_Past_Order</servlet-name>
+        <url-pattern>/LIS/Laboratory_Past_Order</url-pattern>
+    </servlet-mapping>
+
+    <!-- Mapping for LIS HIS050006 -->
+    
+
+
+    <!-- Unused Mapping -->
+
     <servlet>
         <servlet-name>Assign_Specimen</servlet-name>
         <jsp-file>/LIS/assignSpecimen.jsp</jsp-file>
@@ -156,15 +301,6 @@
     <servlet-mapping>
         <servlet-name>Assign_Specimen</servlet-name>
         <url-pattern>/LIS/Assign_Specimen</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>Receive_Specimen</servlet-name>
-        <jsp-file>/LIS/ManageResult.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Receive_Specimen</servlet-name>
-        <url-pattern>/LIS/Receive_Specimen</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -176,36 +312,14 @@
         <url-pattern>/LIS/Sent_Receive_Specimen</url-pattern>
     </servlet-mapping>
     
-    <servlet>
-        <servlet-name>Manage_Test</servlet-name>
-        <jsp-file>/LIS/ManageTest.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Manage_Test</servlet-name>
-        <url-pattern>/LIS/Manage_Test</url-pattern>
-    </servlet-mapping>
+    <!-- Unused Mapping -->
+
     
-    <servlet>
-        <servlet-name>Post_To_Bill</servlet-name>
-        <jsp-file>/LIS/Billing.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Post_To_Bill</servlet-name>
-        <url-pattern>/LIS/Post_To_Bill</url-pattern>
-    </servlet-mapping>
     
-    <servlet>
-        <servlet-name>Maintain_Test_Code</servlet-name>
-        <jsp-file>/LIS/ManageTestCode.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Maintain_Test_Code</servlet-name>
-        <url-pattern>/LIS/Maintain_Test_Code</url-pattern>
-    </servlet-mapping>
     <!--mapping for LIS end-->
     
     
-    
+    <!-- Mapping For LIS Hidding URL End -->
     
     
     
@@ -357,6 +471,19 @@
     <!-- mapping for PIS HIS040013 -->
     
     
+    <!-- Mapping for PIS HIS040014 -->
+
+    <servlet>
+        <servlet-name>Pharmacy_Past_Order</servlet-name>
+        <jsp-file>/PIS/HIS040014.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Pharmacy_Past_Order</servlet-name>
+        <url-pattern>/PIS/Pharmacy_Past_Order</url-pattern>
+    </servlet-mapping>
+
+    <!-- Mapping for PIS HIS040014 -->
+    
     
     <!-- Mapping For PIS Hidding URL End -->
 
@@ -425,41 +552,131 @@
     
     <!-- mapping for SMS HIS220001 -->
     <servlet>
-        <servlet-name>Distribution_Stock_Order</servlet-name>
+        <servlet-name>Order_Stock</servlet-name>
         <jsp-file>/SMS/HIS220001.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Order_Stock</servlet-name>
+        <url-pattern>/SMS/Order_Stock</url-pattern>
+    </servlet-mapping>
+    <!-- mapping for SMS HIS220001 -->
+
+    <!-- mapping for SMS HIS220002 -->
+    <servlet>
+        <servlet-name>Distribution_Stock_Order</servlet-name>
+        <jsp-file>/SMS/HIS220002.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>Distribution_Stock_Order</servlet-name>
         <url-pattern>/SMS/Distribution_Stock_Order</url-pattern>
     </servlet-mapping>
-    <!-- mapping for SMS HIS220001 -->
-
-
     <!-- mapping for SMS HIS220002 -->
+    
+    <!-- mapping for SMS HIS220003 -->
     <servlet>
         <servlet-name>Manage_Stock_Code</servlet-name>
-        <jsp-file>/SMS/HIS220002.jsp</jsp-file>
+        <jsp-file>/SMS/HIS220003.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>Manage_Stock_Code</servlet-name>
         <url-pattern>/SMS/Manage_Stock_Code</url-pattern>
     </servlet-mapping>
-    <!-- mapping for SMS HIS220002 -->
-    
-    
     <!-- mapping for SMS HIS220003 -->
+    
+    
+    <!-- mapping for SMS HIS220004 -->
     <servlet>
         <servlet-name>Manage_Stock_Quantity</servlet-name>
-        <jsp-file>/SMS/HIS220003.jsp</jsp-file>
+        <jsp-file>/SMS/HIS220004.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>Manage_Stock_Quantity</servlet-name>
         <url-pattern>/SMS/Manage_Stock_Quantity</url-pattern>
     </servlet-mapping>
-    <!-- mapping for SMS HIS220003 -->
+    <!-- mapping for SMS HIS220004 -->
+    
+    
+    <!-- mapping for SMS HIS220005 -->
+    <servlet>
+        <servlet-name>Manage_VendorS</servlet-name>
+        <jsp-file>/SMS/HIS220005.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Manage_VendorS</servlet-name>
+        <url-pattern>/SMS/Manage_VendorS</url-pattern>
+    </servlet-mapping>
+    <!-- mapping for SMS HIS220005 -->
+    
+    
+    
+    <!-- mapping for SMS HIS220006 -->
+    <servlet>
+        <servlet-name>List_Of_Category</servlet-name>
+        <jsp-file>/SMS/HIS220006.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>List_Of_Category</servlet-name>
+        <url-pattern>/SMS/List_Of_Category</url-pattern>
+    </servlet-mapping>
+    <!-- mapping for SMS HIS220006 -->
         
+        
+    <!-- mapping for SMS HIS220007 -->
+    <servlet>
+        <servlet-name>List_Of_Items</servlet-name>
+        <jsp-file>/SMS/HIS220007.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>List_Of_Items</servlet-name>
+        <url-pattern>/SMS/List_Of_Items</url-pattern>
+    </servlet-mapping>
+    <!-- mapping for SMS HIS220007 -->
+    
+    
+    <!-- mapping for SMS HIS220008 -->
+    <servlet>
+        <servlet-name>List_Of_Vendor</servlet-name>
+        <jsp-file>/SMS/HIS220008.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>List_Of_Vendor</servlet-name>
+        <url-pattern>/SMS/List_Of_Vendor</url-pattern>
+    </servlet-mapping>
+    <!-- mapping for SMS HIS220008 -->
+    
+    
+    <!-- mapping for SMS HIS220009 -->
+    <servlet>
+        <servlet-name>Sales_For_Stock</servlet-name>
+        <jsp-file>/SMS/HIS220009.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Sales_For_Stock</servlet-name>
+        <url-pattern>/SMS/Sales_For_Stock</url-pattern>
+    </servlet-mapping>
+    <!-- mapping for SMS HIS220009 -->
+    
+    
+    <!-- Mapping for SMS HIS220010 -->
+
+    <servlet>
+        <servlet-name>Stock_Past_Order</servlet-name>
+        <jsp-file>/SMS/HIS220010.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Stock_Past_Order</servlet-name>
+        <url-pattern>/SMS/Stock_Past_Order</url-pattern>
+    </servlet-mapping>
+
+    <!-- Mapping for SMS HIS040014 -->
+    
         
     <!-- Mapping For SMS Hidding URL End -->
+    
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/Error/index.jsp</location>
+    </error-page>
 
 
     <session-config>

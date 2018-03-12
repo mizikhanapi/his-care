@@ -21,7 +21,7 @@
 <input type="hidden" value="<%=disTYT%>" id="Rdis">
 <input type="hidden" value="<%=subTYT%>" id="Rsub">  
 
-<div id="tablefacilityTypeTable">
+<div id="tablefacilityTypeTable" class="table-guling">
 
     <table id="facilityTypeTable"  class="table table-striped table-bordered" cellspacing="0" width="100%">
 
@@ -97,7 +97,7 @@
                     </div>
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="textinput">Ward Class  *</label>
+                        <label class="col-md-4 control-label" for="textinput">Ward Class Name*</label>
                         <div class="col-md-8">
                             <input id="updateWardClass" name="textinput" type="text" class="form-control input-md" maxlength="100" >
                         </div>
@@ -108,7 +108,7 @@
 
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="textinput">Status  *</label>
+                        <label class="col-md-4 control-label" for="textinput">Status *</label>
                         <div class="col-md-8">
                             <select class="form-control" name="tstatus" id="updatestatustype">
                                 <option value="1" >Active</option>
@@ -138,7 +138,8 @@
 <script type="text/javascript" charset="utf-8">
 
     $(document).ready(function () {
-
+        
+        var tableWardClass = $('#facilityTypeTable').DataTable();
 
         //function to edit facility type from table
         $('#FacilityTypeTable').off('click', '#facilityTypeTable #MW_edit').on('click', '#facilityTypeTable #MW_edit', function (e) {
@@ -182,7 +183,7 @@
             //var subDicipline = $('#subDicipline').val();
 
             if (MWClass === "" || MWClass === null) {
-                bootbox.alert("Complete The Ward Class Fields");
+                bootbox.alert("Fill in ward class name.");
 //            } else if (MWID === "" || MWID === null) {
 //                alert("Complete The Fields");
             } else if (status !== "1" && status !== "0") {
@@ -202,7 +203,7 @@
                     url: "facilityTypeUpdate.jsp",
                     type: "post",
                     data: data,
-                    timeout: 10000,
+                    timeout: 60000,
                     success: function (data) {
 
                         if (data.trim() === 'Success') {
@@ -230,82 +231,84 @@
                 });
             }
         });
-    });
-//delete function when click delete on next of kin
-    $('#tablefacilityTypeTable').on('click', '#facilityTypeTable #MW_delete', function (e) {
 
-        e.preventDefault();
-        var row = $(this).closest("tr");
-        var rowData = row.find("#dataFacilityTypehidden").val();
-        var arrayData = rowData.split("|");
-        console.log(arrayData);
-        //assign into seprated val
-        var idtype = arrayData[1], hfc = arrayData[3];
-        bootbox.confirm({
-            message: "Are you sure to delete the facility type information?",
-            title: "Delete Item?",
-            buttons: {
-                confirm: {
-                    label: 'Yes',
-                    className: 'btn-success'
+        //delete function when click delete on next of kin
+        $('#tablefacilityTypeTable').on('click', '#facilityTypeTable #MW_delete', function (e) {
+
+            e.preventDefault();
+            var row = $(this).closest("tr");
+            var rowData = row.find("#dataFacilityTypehidden").val();
+            var arrayData = rowData.split("|");
+            console.log(arrayData);
+            //assign into seprated val
+            var idtype = arrayData[1], hfc = arrayData[3];
+            bootbox.confirm({
+                message: "Are you sure to delete the facility type information?",
+                title: "Delete Item?",
+                buttons: {
+                    confirm: {
+                        label: 'Yes',
+                        className: 'btn-success'
+                    },
+                    cancel: {
+                        label: 'No',
+                        className: 'btn-danger'
+                    }
                 },
-                cancel: {
-                    label: 'No',
-                    className: 'btn-danger'
-                }
-            },
-            callback: function (result) {
+                callback: function (result) {
 
-                if (result === true) {
+                    if (result === true) {
 
-                    var data = {
-                        idtype: idtype,
-                        hfc: hfc
+                        var data = {
+                            idtype: idtype,
+                            hfc: hfc
 
-                    };
-                    $.ajax({
-                        type: "post",
-                        url: "facilityTypeDelete.jsp",
-                        data: data,
-                        timeout: 10000,
-                        success: function (datas) {
-                         
-                            if (datas.trim() === 'Success') {
-                                row.remove();
+                        };
+                        $.ajax({
+                            type: "post",
+                            url: "facilityTypeDelete.jsp",
+                            data: data,
+                            timeout: 60000,
+                            success: function (datas) {
 
-                                $('#FacilityTypeTable').load('facilityType-Table.jsp');
-                                bootbox.alert({
-                                    message: "Successfully deleted",
-                                    title: "Process Result",
-                                    backdrop: true
-                                });
-                                FT_loadWardClassOption();
-                            } else if (datas.trim() === 'Failed') {
-                                bootbox.alert({
-                                    message: "Delete Failed",
-                                    title: "Process Result",
-                                    backdrop: true
+                                if (datas.trim() === 'Success') {
+                                    tableWardClass.row(row).remove().draw();
+                                    //$('#FacilityTypeTable').load('facilityType-Table.jsp');
+                                    bootbox.alert({
+                                        message: "Ward class information is deleted",
+                                        title: "Process Result",
+                                        backdrop: true
+                                    });
+                                    FT_loadWardClassOption();
+                                } else if (datas.trim() === 'Failed') {
+                                    bootbox.alert({
+                                        message: "Delete Failed",
+                                        title: "Process Result",
+                                        backdrop: true
 
-                                });
+                                    });
+                                }
+
+
+                            }, error: function (err) {
+                                alert("Error! Deletion Ajax failed!!");
                             }
 
-
-                        }, error: function (err) {
-                            alert("Error! Deletion Ajax failed!!");
-                        }
-
-                    });
-                } else {
-                    console.log("Process Is Canceled");
+                        });
+                    } else {
+                        console.log("Process Is Canceled");
+                    }
                 }
-            }
+            });
         });
-    });
+
+    });// end of document ready
+
 </script>
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function () {
-        $('#facilityTypeTable').DataTable();
+        
 
     });
 </script>

@@ -4,15 +4,16 @@
     <div class="brand"></div>
     <!-- logo -->
     <div class="logo">
-        Welcome to <span>iHIS</span>
+        <img src="../assets/img/hiscare-icon-web.svg">
+        <!--        Welcome to <span>iHIS</span>-->
     </div>
     <!-- logo -->
 
     <!-- profile Sidebar -->
-    <%@include file="../../assets/side_profile.jsp" %>
-    <hr/>
+    <%//@include file="../../assets/side_profile.jsp" %>
     <!-- profile Sidebar -->
     <ul id="menu-content" class="nav nav-sidebar">
+        <li class="nav-title">Navigation</li>
         <!-- // menu tanpa dropdown -->
         <li>
             <a  href="Order_list" >
@@ -31,7 +32,7 @@
         </li>
         <li>
             <a  href="Post_To_Bill" >
-                <i class="fa fa-file-text fa-lg"></i> Post To Bill
+                <i class="fa fa-paper-plane fa-lg"></i> Post To Bill
             </a>
         </li>
         <li>
@@ -40,15 +41,21 @@
             </a>
         </li>
         <li data-target="#Report" class="collapsed active">
-            <li data-toggle="collapse" data-target="#Report" class="collapsed active">
+        <li data-toggle="collapse" data-target="#Report" class="collapsed active">
             <a href="#"><i class="fa fa-bar-chart fa-lg"></i> Report <span class="arrow"></span></a>
             <ul class="sub-menu collapse" id="Report" aria-expanded="true" style="">
-                <li><a data-toggle="modal" data-target="#" href="list_test_cd.jsp">List Of Test Code</a></li>
-                <li><a data-toggle="modal" data-target="#" href="list_pending_order.jsp">List of Order Status</a></li>
-                <li><a data-toggle="modal" data-target="#" href="list_OfSale.jsp">Sales For Laboratory</a></li>
+                <li><a data-toggle="modal" data-target="#" href="Category_Code_List">List Of Category Code</a></li>
+                <li><a data-toggle="modal" data-target="#" href="Item_Code_List">List Of Test Code</a></li>
+                <li><a data-toggle="modal" data-target="#" href="Laboratory_Order_List">List of Order Status</a></li>
+                <li><a data-toggle="modal" data-target="#" href="Laboratory_Sales_List">Sales For Laboratory</a></li>
             </ul>
         </li>
         </li>
-
+        <li>
+            <a  href="Laboratory_Past_Order" >
+                <i class="fa fa-history sideIcon" aria-hidden="true"></i>Past Completed Order
+            </a>
+        </li>
+    </ul>
 
 </div>  

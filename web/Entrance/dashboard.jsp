@@ -1,178 +1,201 @@
+
 <%@page import="dBConn.Conn"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ADM_helper.MySession" %>
 
+
 <%@include file="validateSession.jsp" %>
-<%    try {
-        //------------------- Checking whether super user or not ------------------------------
-        if (session.getAttribute("HFC_99") == null) {
-            String hfc_cd = (String) session.getAttribute("HEALTH_FACILITY_CODE");
-            session.setAttribute("HFC_99", hfc_cd);
+<%
+    try{
+    //------------------- Checking whether super user or not ------------------------------
+    if (session.getAttribute("HFC_99") == null) {
+        String hfc_cd = (String) session.getAttribute("HEALTH_FACILITY_CODE");
+        session.setAttribute("HFC_99", hfc_cd);
 
-            //setting discipline and subdiscipline name
-            Conn conn = new Conn();
+        //setting discipline and subdiscipline name
+        Conn conn = new Conn();
 
-            String dis_cd = (String) session.getAttribute("DISCIPLINE_CODE");
-            String sub_cd = (String) session.getAttribute("SUB_DISCIPLINE_CODE");
+        String dis_cd = (String) session.getAttribute("DISCIPLINE_CODE");
+        String sub_cd = (String) session.getAttribute("SUB_DISCIPLINE_CODE");
 
-            String query = "select dis.discipline_name, sub.subdiscipline_name "
-                    + "from adm_discipline dis "
-                    + "join adm_subdiscipline sub on sub.discipline_cd = dis.discipline_cd and sub.subdiscipline_hfc_cd = dis.discipline_hfc_cd "
-                    + "where dis.discipline_cd = '" + dis_cd + "' AND sub.subdiscipline_cd = '" + sub_cd + "' and dis.discipline_hfc_cd = '" + hfc_cd + "' LIMIT 1;";
+        String query = "select dis.discipline_name, sub.subdiscipline_name "
+                + "from adm_discipline dis "
+                + "join adm_subdiscipline sub on sub.discipline_cd = dis.discipline_cd and sub.subdiscipline_hfc_cd = dis.discipline_hfc_cd "
+                + "where dis.discipline_cd = '" + dis_cd + "' AND sub.subdiscipline_cd = '" + sub_cd + "' and dis.discipline_hfc_cd = '" + hfc_cd + "' LIMIT 1;";
 
-            ArrayList<ArrayList<String>> dataDis = conn.getData(query);
+        ArrayList<ArrayList<String>> dataDis = conn.getData(query);
+        
+        if(dataDis.size()>0){
+            session.setAttribute("DISCIPLINE_NAME", dataDis.get(0).get(0));
+            session.setAttribute("SUB_DISCIPLINE_NAME", dataDis.get(0).get(1));
+        }
+        else{
+            session.setAttribute("DISCIPLINE_NAME", "Unknown discipline code("+dis_cd+"). Contact your admin.");
+            session.setAttribute("SUB_DISCIPLINE_NAME", "Unknown subdiscipline code("+sub_cd+"). Contact your admin.");
+        }
 
-            if (dataDis.size() > 0) {
-                session.setAttribute("DISCIPLINE_NAME", dataDis.get(0).get(0));
-                session.setAttribute("SUB_DISCIPLINE_NAME", dataDis.get(0).get(1));
-            } else {
-                session.setAttribute("DISCIPLINE_NAME", "Unknown discipline code(" + dis_cd + "). Contact your admin.");
-                session.setAttribute("SUB_DISCIPLINE_NAME", "Unknown subdiscipline code(" + sub_cd + "). Contact your admin.");
+        
+
+    }
+
+    String hfc_99 = (String) session.getAttribute("HFC_99");
+    String user_99 = (String) session.getAttribute("USER_ID");
+    String last_9 = user_99.substring(user_99.length() - 1);
+
+    //====================================================================================
+    //String modules = session.getAttribute("MODULE_CODE").toString();
+    
+    MySession mys = new MySession(user_99, hfc_99);
+    mys.initModulePageAccess();
+    
+    String modules = mys.getLongStringModule();
+
+    ArrayList<String> arrayModule = new ArrayList<String>(Arrays.asList(modules.split("\\|")));
+
+    boolean mod01, mod02, mod03, mod04, mod05, mod06, mod07, mod08, mod09, mod10, mod11, mod12, mod13, mod14, mod15, mod16, mod17, mod18, mod19, mod20, mod21, mod22, mod23;
+
+    mod01 = mod02 = mod03 = mod04 = mod05 = mod06 = mod07 = mod08 = mod09 = mod10 = mod11 = mod12 = mod13 = mod14 = mod15 = mod16 = mod17 = mod18 = mod19 = mod20 = mod21 = mod22 = mod23 = false;
+
+    if (mys.isSuperUser()) {
+        mod01 = mod02 = mod03 = mod04 = mod05 = mod06 = mod07 = mod08 = mod09 = mod10 = mod11 = mod12 = mod13 = mod14 = mod15 = mod16 = mod17 = mod18 = mod19 = mod20 = mod21 = mod22 = mod23 = true;
+
+    } else {
+
+        for (int i = 0; i < arrayModule.size(); i++) {
+
+            if (arrayModule.get(i).equalsIgnoreCase("01")) {
+
+                mod01 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("02")) {
+
+                mod02 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("03")) {
+
+                mod03 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("04")) {
+
+                mod04 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("05")) {
+
+                mod05 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("06")) {
+
+                mod06 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("07")) {
+
+                mod07 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("08")) {
+
+                mod08 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("09")) {
+
+                mod09 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("10")) {
+
+                mod10 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("11")) {
+
+                mod11 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("12")) {
+
+                mod12 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("13")) {
+
+                mod13 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("14")) {
+
+                mod14 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("15")) {
+
+                mod15 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("16")) {
+
+                mod16 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("17")) {
+
+                mod17 = true;
+
+            } else if (arrayModule.get(i).equalsIgnoreCase("18")) {
+
+                mod18 = true;
+
+            }else if (arrayModule.get(i).equalsIgnoreCase("19")) {
+
+                mod19 = true;
+
+            }else if (arrayModule.get(i).equalsIgnoreCase("20")) {
+
+                mod20 = true;
+
+            }else if (arrayModule.get(i).equalsIgnoreCase("21")) {
+
+                mod21 = true;
+
+            }else if (arrayModule.get(i).equalsIgnoreCase("22")) {
+
+                mod22 = true;
+
+            }else if (arrayModule.get(i).equalsIgnoreCase("23")) {
+
+                mod23 = true;
+
             }
+        }//end for loop
 
-        }
-
-        String hfc_99 = (String) session.getAttribute("HFC_99");
-        String user_99 = (String) session.getAttribute("USER_ID");
-        String last_9 = user_99.substring(user_99.length() - 1);
-        String my_1_gamba = session.getAttribute("PICTURE").toString();
-
-        //====================================================================================
-        //String modules = session.getAttribute("MODULE_CODE").toString();
-        MySession mys = new MySession(user_99, hfc_99);
-        mys.initModulePageAccess();
-
-        String modules = mys.getLongStringModule();
-
-        ArrayList<String> arrayModule = new ArrayList<String>(Arrays.asList(modules.split("\\|")));
-
-        boolean mod01, mod02, mod03, mod04, mod05, mod06, mod07, mod08, mod09, mod10, mod11, mod12, mod13, mod14, mod15, mod16, mod17, mod18, mod19, mod20, mod21, mod22;
-
-        mod01 = mod02 = mod03 = mod04 = mod05 = mod06 = mod07 = mod08 = mod09 = mod10 = mod11 = mod12 = mod13 = mod14 = mod15 = mod16 = mod17 = mod18 = mod19 = mod20 = mod21 = mod22 = false;
-
-        if (mys.isSuperUser()) {
-            mod01 = mod02 = mod03 = mod04 = mod05 = mod06 = mod07 = mod08 = mod09 = mod10 = mod11 = mod12 = mod13 = mod14 = mod15 = mod16 = mod17 = mod18 = mod19 = mod20 = mod21 = mod22 = true;
-
-        } else {
-
-            for (int i = 0; i < arrayModule.size(); i++) {
-
-                if (arrayModule.get(i).equalsIgnoreCase("01")) {
-
-                    mod01 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("02")) {
-
-                    mod02 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("03")) {
-
-                    mod03 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("04")) {
-
-                    mod04 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("05")) {
-
-                    mod05 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("06")) {
-
-                    mod06 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("07")) {
-
-                    mod07 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("08")) {
-
-                    mod08 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("09")) {
-
-                    mod09 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("10")) {
-
-                    mod10 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("11")) {
-
-                    mod11 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("12")) {
-
-                    mod12 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("13")) {
-
-                    mod13 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("14")) {
-
-                    mod14 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("15")) {
-
-                    mod15 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("16")) {
-
-                    mod16 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("17")) {
-
-                    mod17 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("18")) {
-
-                    mod18 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("19")) {
-
-                    mod19 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("20")) {
-
-                    mod20 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("21")) {
-
-                    mod21 = true;
-
-                } else if (arrayModule.get(i).equalsIgnoreCase("22")) {
-
-                    mod22 = true;
-
-                }
-            }//end for loop
-
-        }
+    }
 
 %>
+
+
+
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- header -->
         <script src="libraries/jquery.min.js" type="text/javascript"></script>
         <%@include file = "../assets/header.html" %>
+        <link href="../assets/css/care.css" rel="stylesheet" type="text/css"/>
         <link href="../assets/css/iconsmind.css" rel="stylesheet" type="text/css"/>
+        
         <!-- header -->
-
-
-
     </head>
 
-    <body class="hold-transition skin-care layout-top-nav">
-        <div class="wrapper">
-            <%@include file = "libraries/topMenus-dashboard.html" %><!-- menu top -->
-            <div class="content-wrapper">
-                <div class="container m-scene">
-                    <div class="col-md-12 main-dashboard m-t-30">
+    <body>
+        <div class="loading"></div>
+        <div class="background-all" style="
+             position: fixed;
+             bottom: 20px;
+             right: 20px;
+             z-index: 1;
+             opacity: 0.08;
+             ">
+            <i class="fa fa-user-md" style="font-size: 500px;"></i>
+        </div>
+        <!-- menu top -->
+        <%@include file = "libraries/topMenus-dashboard.html" %>
+        <!-- menu top -->
+
+        <div class="container-fluid m-scene">
+            <div class="col-md-12 main-dashboard m-t-30">
                         <div class="row">
                             <%                            if (mod01) {
                             %>
@@ -426,13 +449,15 @@
                             %>
 
                         </div>
-                    </div>   
-                </div>
-            </div>
+                    </div> 
+            <!-- main -->		
+
         </div>
-        <div class="loading"></div>
 
 
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
         <%@include file="libraries/script.html"%>
         <%@include file="../assets/script.html"%>
         <script type="text/javascript" >
@@ -445,28 +470,20 @@
                     type: 'POST',
                     url: "getUserName.jsp",
                     success: function (data, textStatus, jqXHR) {
-                        $('#welcomeMain').text(data.trim());
                         $('#welcome').text(data.trim());
-                        console.log(data);
-                    }});
-
-                $.ajax({
-                    type: 'POST',
-                    url: "getGambo.jsp",
-                    success: function (data, textStatus, jqXHR) {
-                        $('.gambarUser').attr("src", data);
-
                         console.log(data);
                     }});
 
             });
         </script>
 
-    </body>
 
-</html>
-<%    }//end try
-    catch (Exception e) {
+
+
+    </body></html>
+<%
+    }//end try
+    catch(Exception e){
         System.out.println("Entering dashboard");
         e.printStackTrace();
         out.print("<h1>Oopps! Something went wrong. Try again later.</h1>");

@@ -52,24 +52,24 @@
         <!-- Menu Body -->
         <li class="user-body">
             <div class="row">
-                <div class="col-xs-4 text-center">
-                    <a href="#"><%= my_1_hfcName%></a>
+                <div class="col-xs-12 ">
+                    <label>Health Facility:</label>&nbsp;<%= my_1_hfcName%>
                 </div>
-                <div class="col-xs-4 text-center">
-                    <a href="#"><%= my_1_dis_name%></a>
+                <div class="col-xs-12 ">
+                    <label>Discipline:</label>&nbsp;<%= my_1_dis_name%>
                 </div>
-                <div class="col-xs-4 text-center">
-                    <a href="#"><%= my_1_sub_name%></a>
+                <div class="col-xs-12 ">
+                    <label>Sub Discipline:</label>&nbsp;<%= my_1_sub_name%>
                 </div>
             </div>
             <!-- /.row -->
         </li>
         <!-- Menu Footer-->
-        <li class="user-footer">
-            <div class="pull-left">
+        <li class="user-footer" style="display: table; width: 100%;">
+            <div class="text-left" style="display: table-cell">
                 <button type="button" class="btn btn-default btn-flat" onclick="window.location.href = '../Entrance/Profile'">Manage Account</button>
             </div>
-            <div class="pull-right">
+            <div class="text-right" style="display: table-cell">
                 <a href="../Entrance/destroySession.jsp" id="btnCIS_LOGOUT" class="btn btn-default btn-flat">Sign out</a>
             </div>
         </li>

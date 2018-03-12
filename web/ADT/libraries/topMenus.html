@@ -13,13 +13,13 @@
                     </div>
                 </div>
 
-                <ul class="nav navbar-nav navbar-right logout" style="">
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 15px;">
                     <li>
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#style-3" aria-expanded="false" aria-controls="navbar">
                             <i class="fa fa-bars fa-lg"></i>
                         </button>
                     </li>
-                    <li><a href="../Entrance/destroySession.jsp" title="Log Out"><i class=" fa fa-power-off"></i></a></li>
+                    <%@include file="../../assets/side_profile.jsp" %>
                 </ul>
 
             </div>

@@ -10,9 +10,9 @@
             minLength: 3,
             searchIn: 'name',
             //searchDelay:3000,
-
             url:urlData,
-            cache:true,
+            cache:false, // must set to false because default is true
+            searchContain: true,
             params:{
                 timeout:3000,
                 success:function(result){
@@ -23,6 +23,12 @@
                 }
             }
          });
+         
+        $("#"+fieldId).on('change:flexdatalist', function (event, set, options) {
+           // console.log($("#"+fieldId).val());
+            $("#"+fieldId+"-flexdatalist").val($("#"+fieldId).val().toLowerCase());
+            //console.log(set.text);
+        });
 
         $("#"+fieldId).on('before:flexdatalist.data',function(response){
         
@@ -57,7 +63,7 @@
         searchDelay: 2000,
         //data:arrayDGSDataAjax,
         url: urlData,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -104,7 +110,7 @@ function searchingHFC(fieldId, loadingDivId, urlData, urlCode, codeFieldId, loca
         searchIn: 'name',
         searchDelay: 2000,
         url: urlData,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -165,7 +171,7 @@ function searchingHFCValue(fieldId, loadingDivId, urlData, urlCode, codeFieldId,
         searchIn: 'name',
         searchDelay: 2000,
         url: urlData,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -258,7 +264,7 @@ function searchHFCOnly(fieldId,loadingDivId){
         searchIn: 'name',
         searchDelay: 2000,
         url: "search/ResultHFCSearch.jsp",
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -285,7 +291,7 @@ function searchHFCDefault(fieldId, loadingDivId,value) {
         searchIn: 'name',
         searchDelay: 2000,
         url: "search/ResultHFCSearch.jsp",
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -312,7 +318,7 @@ function searchDisciplineOnly(fieldId, loadingDivId,hfc_code) {
         searchIn: 'name',
         searchDelay: 2000,
         url: "search/ResultDISCIPLINESearch.jsp?hfc_code="+hfc_code,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -338,7 +344,7 @@ function retrieveDisciplineOnly(fieldId, loadingDivId, hfc_code,currentValue) {
         searchIn: 'name',
         searchDelay: 2000,
         url: "search/ResultDISCIPLINESearch.jsp?hfc_code=" + hfc_code,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -403,7 +409,7 @@ function searchWard(fieldId,loadingDivId,hfc_cd,discipline_cd,currentValue,wardC
         searchIn: 'name',
         searchDelay: 2000,
         url: "search/ResultWARDSearch.jsp?hfc_code="+hfc_cd+"&discipline_cd="+discipline_cd+"&class="+wardClass,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -423,7 +429,7 @@ function searchWardClass(fieldId,loadingDivId,hfc_cd,discipline_cd,currentValue)
         searchIn: 'name',
         searchDelay: 2000,
         url: "search/ResultWARDCLASSSearch.jsp?hfc_code="+hfc_cd+"&discipline_cd="+discipline_cd,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -442,7 +448,7 @@ function retrieveDataSearchingHFC(fieldId, loadingDivId, urlData, urlCode, codeF
         searchIn: 'name',
         searchDelay: 2000,
         url: urlData,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -503,7 +509,7 @@ function searchLIO(searchFieldId, url, loadingId, currentValue) {
         valueProperty: 'code',
         visibleProperties: ["name", "source"],
         url: url,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -523,7 +529,7 @@ function searchDTO(searchFieldId, loadingId, currentValue) {
         selectionRequired: true,
         url: "search/ResultDTOSearch.jsp",
         valueProperty:'value',
-        cache: true,
+        cache: false,
         maxShownResults:50,
         debug: false,
         params: {
@@ -553,7 +559,7 @@ function searchPOS(searchFieldId, loadingId, currentValue, level,parentCode) {
         searchDelay: 2000,
         selectionRequired: true,
         url: urlSearch,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -580,7 +586,7 @@ function searchPOS1(searchFieldId, loadingId, currentValue, level,parentCode) {
         searchDelay: 2000,
         selectionRequired: true,
         url: urlSearch,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -607,7 +613,7 @@ function searchPOS2(searchFieldId, loadingId, currentValue, level,parentCode) {
         searchDelay: 2000,
         selectionRequired: true,
         url: urlSearch,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -766,7 +772,7 @@ function searchDOCTOROnly(fieldId, loadingDivId, hfc_code) {
         searchIn: 'name',
         searchDelay: 2000,
         url: "search/ResultDOCTORSearch.jsp?hfc_code=" + hfc_code,
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -786,7 +792,7 @@ function searchDOCTORValue(fieldId, loadingDivId, hfc_code,value) {
         searchIn: 'name',
         searchDelay: 2000,
         url: "search/ResultDOCTORSearch.jsp?hfc_code=" + hfc_code,
-        cache: true,
+        cache: false,
         valueProperty: 'name',
         visibleProperties: ['name', "role", "discipline", "subdiscipline"],
         params: {
@@ -817,7 +823,7 @@ function searchDOCTOROnlySurgical(fieldId, loadingDivId, hfc_code,value) {
         url: "search/ResultDOCTORSurgicalSearch.jsp?hfc_code=" + hfc_code,
         valueProperty: 'name',
         visibleProperties: ['name',"role", "discipline","subdiscipline"],
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -843,7 +849,7 @@ function searchOTRoomSurgical(fieldId, loadingDivId,value) {
         searchDelay: 2000,
         url: "search/ResultOTRoomSearch.jsp",
         valueProperty: 'value',
-        cache: true,
+        cache: false,
         params: {
             timeout: 3000,
             success: function (result) {
@@ -888,7 +894,7 @@ function searchPOSSurgicalCategory(searchFieldId, loadingId, currentValue) {
         searchDelay: 2000,
         selectionRequired: true,
         url: "search/ResultPOSSurgicalCategorySearch.jsp",
-        cache: true,
+        cache: false,
         valueProperty: 'name',
         params: {
             timeout: 3000,
@@ -916,7 +922,7 @@ function searchPOSSurgicalProcedure(searchFieldId, loadingId, currentValue,catCo
         searchDelay: 2000,
         selectionRequired: true,
         url: "search/ResultPOSSurgicalSearch.jsp?cat_cd="+catCode,
-        cache: true,
+        cache: false, //must set to false because default is true.
         params: {
             timeout: 3000,
             success: function (result) {
@@ -942,7 +948,7 @@ function searchPOSSurgicalProcedure(searchFieldId, loadingId, currentValue,catCo
             searchDelay: 2000,
             //data:arrayDGSDataAjax,
             url: urlData,
-            cache: true,
+            cache: false,
             params: {
                 timeout: 3000,
                 success: function (result) {
@@ -998,7 +1004,7 @@ function searchPOSSurgicalProcedure(searchFieldId, loadingId, currentValue,catCo
                 }
                 
             }
-        })
+        });
 }
 
 //});

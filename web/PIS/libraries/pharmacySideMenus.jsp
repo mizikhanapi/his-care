@@ -5,16 +5,16 @@
     <div class="brand"></div>
     <!-- logo -->
     <div class="logo">
-        Welcome to <span>iHIS</span>
+        <img src="../assets/img/hiscare-icon-web.svg">
     </div>
     <!-- logo -->
 
 
     <!-- profile Sidebar -->
-    <%@include file="../../assets/side_profile.jsp" %>
-    <hr/>
+    <%//@include file="../../assets/side_profile.jsp" %>
     <!-- profile Sidebar -->
     <ul class="nav nav-sidebar" id="side-menu">
+        <li class="nav-title">Navigation</li>
         <!-- Menu without dropdown -->
         <li><a href="Dispense_Drug_Order"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true" ></i>Dispense Drug Order</a></li>
         <li><a href="Manage_Drug_Code"><i class="fa fa-table fa-lg" aria-hidden="true" ></i>Manage Drug Code </a></li>
@@ -27,7 +27,7 @@
             <a href="#"><i class="fa fa-bar-chart fa-lg"></i> Report <span class="arrow"></span></a>
         </li>
         <ul class="sub-menu collapse" id="Report">
-            <li><a data-toggle="modal" data-target="#" href="ATC_Drug_List">List Of ATC Drugs</a></li>
+            <li><a data-toggle="modal" data-target="#" href="ATC_Drug_List">List Of Category Codes</a></li>
             <li><a data-toggle="modal" data-target="#" href="MDC_Drug_List">List Of Pharmacy Drugs</a></li>
             <li><a data-toggle="modal" data-target="#" href="Supplier_List">List Of Supplier</a></li>
             <li><a data-toggle="modal" data-target="#" href="Drug_Reorder_Level_List">List Of Drugs Below Reorder Level</a></li>
@@ -37,9 +37,10 @@
         </ul> 
         <!-- Menu with dropdown 2 -->
 
-        <%            
-            
-            String roleCode = session.getAttribute("ROLE_CODE").toString();
+        <li><a href="Pharmacy_Past_Order"><i class="fa fa-history sideIcon" aria-hidden="true"></i>Past Completed Order</a></li>
+
+
+        <%            String roleCode = session.getAttribute("ROLE_CODE").toString();
             String hfcCD = session.getAttribute("HEALTH_FACILITY_CODE").toString();
             String userID = session.getAttribute("USER_ID").toString();
 

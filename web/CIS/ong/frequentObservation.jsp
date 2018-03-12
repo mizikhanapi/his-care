@@ -47,17 +47,16 @@
             <th>Temperature</th>
             <th>Pulse</th>
             <th>Respiration</th>
-            <th>BP</th>
-            <th>Pupil Right</th>
-            <th>Pupil Left</th>
+            <th>B. Pressure</th>
+            <th>Pupil Details</th>
             <th>Conscious State &amp; Remarks</th>
             <th>Drugs Given</th>
-            <th>Doctor Approval</th>
+            <th>Record Information</th>
             <th>Action</th>
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="12" align="center">No Record To Show<br>Please Select A History Assessment</td>
+                    <td colspan="11" align="center">No Record To Show<br>Please Select A History Assessment</td>
                 </tr>
             </tbody>
         </table>
@@ -69,12 +68,28 @@
 
 <script>
 
+
+
+    $('.decimalNumbersOnly').keyup(function () {
+        if (this.value !== this.value.replace(/[^0-9\.]/g, '')) {
+            this.value = this.value.replace(/[^0-9\.]/g, '');
+        }
+    });
+
+
+    $('.singleNumbersOnly').keyup(function () {
+        if (this.value !== this.value.replace(/[^0-9]/g, '')) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+    });
+
+
     $(document).ready(function () {
 
 
         // Disabling Start And End Date
         $("#freqObservationChartSelectAssessmentStartEnd").hide();
-        
+
 // ---------------------------------------------------------------------------- VIew ------------------------------------------------------------------------------------------- //
 
 
@@ -201,6 +216,10 @@
         // Function for Table Start 
         function FreqObservationChartTableFiter(viewData) {
 
+
+            $('<div class="loading">Loading</div>').appendTo('body');
+
+
             var data = {
                 dataString: viewData,
                 methodName: "view"
@@ -326,26 +345,15 @@
 
             $('#freqObservationChartModalForm')[0].reset();
 
+            var harini = new Date();
+            var hariniyangtelahconvert = ("0" + harini.getDate()).slice(-2) + "/" + ("0" + (harini.getMonth() + 1)).slice(-2) + "/" + harini.getFullYear();
+            $('#freqObservationChartModalDate').val(hariniyangtelahconvert);
+
             $('#freqObservationChartModalDrugGiven').val('');
 
             var val = $('#freqObservationChartModalDrugGiven').val().trim();
 
             flexDataListFreqObserReinitializeSearch(val);
-
-//            $("#freqObservationChartModalDate").datepicker({
-//                changeMonth: true,
-//                changeYear: true,
-//                maxDate: '+0d',
-//                dateFormat: 'dd/mm/yy'
-//            });
-
-//            $('#freqObservationChartModalTime').timepicker({
-//                'timeFormat': 'HH:mm',
-//                'scrollbar': 'true',
-//                'minTime': '00:00',
-//                'maxTime': '23:59',
-//                'interval': 1
-//            });
 
         });
         // Function For Add Button End
@@ -374,7 +382,8 @@
             var temperature = $('#freqObservationChartModalTemperature').val();
             var pulse = $('#freqObservationChartModalPulse').val();
             var respiration = $('#freqObservationChartModalRespiration').val();
-            var bp = $('#freqObservationChartModalBP').val();
+            var bpSys = $('#freqObservationChartModalBPSys').val();
+            var bpDia = $('#freqObservationChartModalBPDia').val();
             var pupilLeftReact = $('#freqObservationChartModalPupilLeftReact').val();
             var pupilLeftSize = $('#freqObservationChartModalPupilLeftSize').val();
             var pupilRightReact = $('#freqObservationChartModalPupilRightReact').val();
@@ -403,7 +412,7 @@
             } else {
 
                 var datas = pmi_no + "|" + hfc_cd1 + "|" + epDate + "|" + encounterDate + "|" + newDate + " " + time + ":00:00.0|" +
-                        temperature + "|" + pulse + "|" + respiration + "|" + bp + "|" + pupilLeftReact + "|" + pupilLeftSize + "|" +
+                        temperature + "|" + pulse + "|" + respiration + "|" + bpSys + "|" + bpDia + "|" + pupilLeftReact + "|" + pupilLeftSize + "|" +
                         pupilRightReact + "|" + pupilRightSize + "|" + consiousState + "|" + drugGiven + "||Pending";
 
                 console.log(datas);
@@ -455,30 +464,13 @@
             $('#freqObservationChartModalTitle').text("Update Frequency Observation");
             $('#freqObservationChartModal_btnAdd_or_btnUpdate_div').html('<button type="button" class="btn btn-success btn-block btn-lg" id="freqObservationChartUpdateModalBtn" role="button">Update Items</button>');
 
-            //$('#freqObservationChartModalForm')[0].reset();
-//            $("#freqObservationChartModalDate").datepicker({
-//                changeMonth: true,
-//                changeYear: true,
-//                maxDate: '+0d',
-//                dateFormat: 'dd/mm/yy'
-//            });
-
-
-//            $('#freqObservationChartModalTime').timepicker({
-//                'timeFormat': 'HH:mm',
-//                'scrollbar': 'true',
-//                'minTime': '00:00',
-//                'maxTime': '23:59',
-//                'interval': 1
-//            });
-
 
             //get the row value
             var row = $(this).closest("tr");
             var rowData = row.find("#dataFreqObservationCharthidden").val();
 
-            var arrayData = rowData.split("|"); 
-            var ti = arrayData[18].split(":");
+            var arrayData = rowData.split("|");
+            var ti = arrayData[19].split(":");
             var newTi = ti[0];
             console.log(ti);
             $('#ONGFreqObservationChartPmi').val(arrayData[0]);
@@ -492,13 +484,14 @@
             $('#freqObservationChartModalTemperature').val(arrayData[6]);
             $('#freqObservationChartModalPulse').val(arrayData[7]);
             $('#freqObservationChartModalRespiration').val(arrayData[8]);
-            $('#freqObservationChartModalBP').val(arrayData[9]);
-            $('#freqObservationChartModalPupilLeftReact').val(arrayData[13]);
-            $('#freqObservationChartModalPupilLeftSize').val(arrayData[12]);
-            $('#freqObservationChartModalPupilRightReact').val(arrayData[11]);
-            $('#freqObservationChartModalPupilRightSize').val(arrayData[10]);
-            $('#freqObservationChartModalConsiousState').val(arrayData[14]);
-            $('#freqObservationChartModalDrugGiven').val(arrayData[15]);
+            $('#freqObservationChartModalBPSys').val(arrayData[9]);
+            $('#freqObservationChartModalBPDia').val(arrayData[10]);
+            $('#freqObservationChartModalPupilLeftReact').val(arrayData[14]);
+            $('#freqObservationChartModalPupilLeftSize').val(arrayData[13]);
+            $('#freqObservationChartModalPupilRightReact').val(arrayData[12]);
+            $('#freqObservationChartModalPupilRightSize').val(arrayData[11]);
+            $('#freqObservationChartModalConsiousState').val(arrayData[15]);
+            $('#freqObservationChartModalDrugGiven').val(arrayData[16]);
 
 
             var val = $('#freqObservationChartModalDrugGiven').val().trim();
@@ -526,13 +519,12 @@
             var encounterDate = $('#ONGFreqObservationChartEncounterDate').val();
 
             var time = $('#freqObservationChartModalTime').val();
-//            var sTime = time.split(':');
-//            var newTime = sTime[0] + ":" + sTime[1];
 
             var temperature = $('#freqObservationChartModalTemperature').val();
             var pulse = $('#freqObservationChartModalPulse').val();
             var respiration = $('#freqObservationChartModalRespiration').val();
-            var bp = $('#freqObservationChartModalBP').val();
+            var bpSys = $('#freqObservationChartModalBPSys').val();
+            var bpDia = $('#freqObservationChartModalBPDia').val();
             var pupilLeftReact = $('#freqObservationChartModalPupilLeftReact').val();
             var pupilLeftSize = $('#freqObservationChartModalPupilLeftSize').val();
             var pupilRightReact = $('#freqObservationChartModalPupilRightReact').val();
@@ -542,7 +534,7 @@
 
 
             var datas = pmi_no + "|" + hfc_cd1 + "|" + epDate + "|" + encounterDate + "|" + newDate + " " + time + ":00:00.0|" +
-                    temperature + "|" + pulse + "|" + respiration + "|" + bp + "|" + pupilLeftReact + "|" + pupilLeftSize + "|" +
+                    temperature + "|" + pulse + "|" + respiration + "|" + bpSys + "|" + bpDia + "|" + pupilLeftReact + "|" + pupilLeftSize + "|" +
                     pupilRightReact + "|" + pupilRightSize + "|" + consiousState + "|" + drugGiven + "||Pending";
 
             console.log(datas);

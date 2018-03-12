@@ -21,19 +21,17 @@
 
 %>
 <div class="col-sm-3 col-md-2 sidebar" id="style-3">
-		<!-- logo -->
-		<div class="logo">
-		Welcome to <span>iHIS</span>
-		</div>
-		<!-- logo -->
+    <!-- logo -->
+    <div class="logo">
+        <img src="../assets/img/hiscare-icon-web.svg">
+    </div>
+    <!-- logo -->
 		
-		<!-- profile Sidebar -->
-		 <%@include file="../../assets/side_profile.jsp" %>
-		<hr/>
-		<!-- profile Sidebar -->
+		
 				
             <ul id="menu-content" class="nav nav-sidebar">
                 <!-- // menu tanpa dropdown -->
+                <li class="nav-title">Navigation</li>
 				<li><a href="Lookup"><i class="fa fa-search fa-lg"></i>Lookup Code Maintenance</a></li>
 				<li><a href="UserManagement"><i class="fa fa-users fa-lg" ></i>Users Administration</a></li>
 <!--				<li><a href="QueueManagement"><i class="fa fa-files-o fa-lg"></i>Queue Maintenance</a></li>-->

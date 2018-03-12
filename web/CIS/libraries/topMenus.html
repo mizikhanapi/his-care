@@ -1,29 +1,51 @@
-<header class="main-header">
-    <!-- Logo -->
-    <a href="../../index2.html" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>HIS</b></span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>HIS</b> CARE</span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-        <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </a>
+<nav class="navbar navbar-static-top">
+    <div class="container-fluid">
+        <div class="row">
 
-        <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-                <li><a id="missingBtn" >Missing</a></li>
-                <li><a id="holdBtn" >On Hold</a></li>
-                <li><a id="dischargeBtn" >Discharge</a></li>
-                <li><a id="nextBtn" class="changePatientBtn">Next</a></li>
-                <%@include file="../../assets/side_profile.jsp" %>
-            </ul>
+
+            <div id="navbar" class="navbar-collapse ">
+                <ul class="nav navbar-nav navbar-left back" style="">
+                    <li><a id="backBtn" title="Back"><i class=" fa fa-chevron-left"></i></a></li>
+                </ul>
+                <!--                <ul class="nav navbar-nav navbar-left" style="margin-left: 20px;">
+                                    <li><a id="backBtn"><i class="fa fa-caret-left fa-1x"></i></a></li>
+                                    <li><a id="nextBtn">Next</a></li>
+                                    <li><a id="queueBtn">Queue</a></li>
+                                    <li><a id="searchBtn">Search</a></li>
+                                </ul>-->
+                <div class="nav navbar-nav navbar-left">
+                    <div style="padding: 10px 20px; display: block; font-size: 22px;">
+                        <span style="font-size: 22px;">Doctor Consultation</span>
+                    </div>
+                </div>
+
+                <!--                <ul class="nav navbar-nav navbar-right" style="margin-right: 20px;">
+                                    <li><a id="missingBtn">Missing</a></li>
+                                    <li><a id="holdBtn">On Hold</a></li>
+                                    <li><a id="dischargeBtn">Discharge</a></li>
+                                </ul>-->
+                <!-- only visible in mobile mode -->
+                <ul class="nav navbar-nav navbar-right logout cis-menu visible-xs">
+                    <li>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#style-3" aria-expanded="false" aria-controls="navbar">
+                            <i class="fa fa-bars fa-lg"></i>
+                        </button>
+                    </li>
+                    <li><a title="Log Out" style="font-size: 18px;" id="btnCIS_LOGOUT" class="btnCIS_LOGOUT"><i class=" fa fa-power-off"></i></a></li>
+                </ul>
+                <!-- only visible in mobile mode -->
+                <ul class="nav navbar-nav navbar-right cis-menu" style="margin-right: 20px;">
+
+                    <li><a id="missingBtn" >Missing</a></li>
+                    <li><a id="holdBtn" >On Hold</a></li>
+                    <li><a id="dischargeBtn" >Discharge</a></li>
+                    <li><a id="nextBtn" class="changePatientBtn">Next</a></li>
+                    <%@include file="../../assets/side_profile.jsp" %>
+                </ul>
+
+            </div>
+
         </div>
-    </nav>
-</header>
+
+    </div>
+</nav>

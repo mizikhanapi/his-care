@@ -53,7 +53,7 @@ var HCSContent = [];
 
 
 function  disableSOAP() {
-    bootbox.alert("You need to select the patient");
+    bootbox.alert("You need to select a patient from the <b>Queue!</b>");
     return false;
 }
 
@@ -302,10 +302,19 @@ function searchInitialize(id, action){
                 type: 'POST',
                 timeout: 3000,
                 success: function (r) {
-                    console.log(r);
+                  
                     $("#divSelectDrugFrequency").html(r.trim());
                 }
             }); 
+//            $.ajax({
+//                url: 'search/GetSelectDrugForm.jsp',
+//                type: 'POST',
+//                timeout: 3000,
+//                success: function (r) {
+//                    console.log(r);
+//                    $("#divSelectDrugForm").html(r.trim());
+//                }
+//            }); 
             
         }else if(id === "FLU"){
             searchDOCTORValue("tCISPlanFLUDOCSearch_Update", "tCISPlanFLUDOCSearchLoading_Update", hfc_cd, "");
@@ -466,3 +475,4 @@ function validationField(id,message){
         return true
     }
 }
+

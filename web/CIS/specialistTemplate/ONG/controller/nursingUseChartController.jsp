@@ -54,7 +54,7 @@
     } else if (methodName.equalsIgnoreCase("viewMaster") && !data.equalsIgnoreCase("null")) {
         ArrayList<ArrayList<String>> datas = nurUse.getNursingUseMaster(data + longString);
 %>
-<h5>Nursing Use Master Chart</h5>
+<h5>Nursing Master Chart</h5>
 <div class="table-guling">
     <table class="table table-bordered" id="tableChartNursingUseMasterTable" style="width: 100%">
         <thead>
@@ -62,7 +62,7 @@
         <th>Range</th>
         <th>Drug Details</th>
         <th>Supply</th>
-        <th>Approval</th>
+        <th>Record Information</th>
         <th>Status</th>
         <th>Action</th>
         </thead>
@@ -100,7 +100,13 @@
             <br>
             Dispensed By : <strong><%=datas.get(i).get(28)%></strong>
         </td> 
-        <td><%=datas.get(i).get(21)%></td>                  <!-- Approved By -->
+        <td>
+            <strong>Created By</strong><br><!-- Created By -->
+            <%=datas.get(i).get(29)%>
+            <br><br>
+            <strong>Approved By</strong><br><!-- Approved By -->
+            <%=datas.get(i).get(21)%>
+        </td> 
         <td>
             <%
                 if (datas.get(i).get(16).equalsIgnoreCase("pending")) { %>
@@ -134,14 +140,18 @@
 </div>
 
 <script>
+
     $('#tableChartNursingUseMasterTable').DataTable({
         "paging": true,
         "lengthChange": false,
         "pageLength": 2,
         "language": {
             "emptyTable": "No Record Available To Display"
+        }, initComplete: function (settings, json) {
+            $('.loading').hide();
         }
     });
+
 </script>
 
 
@@ -158,7 +168,7 @@
 <br><br><br>
 
 <div class="col-md-12" id="tableChartNursingUseDetailTableDiv">     
-    <h5>Nursing Use Detail Chart</h5>
+    <h5>Nursing Detail Chart</h5>
     <input id="tableChartNursingUseDetailTableMasterDateHidden" type="hidden" >
     <div class="table-guling">
         <table class="table table-bordered" id="tableChartNursingUseDetailTable" style="width: 100%">
@@ -204,14 +214,18 @@
 
 
 <script>
+
     $('#tableChartNursingUseDetailTable').DataTable({
         "paging": true,
         "lengthChange": false,
         "pageLength": 2,
         "language": {
             "emptyTable": "No Record Available To Display"
+        }, initComplete: function (settings, json) {
+            $('.loading').hide();
         }
     });
+
 </script>
 
 

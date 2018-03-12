@@ -52,7 +52,7 @@
             <th>PU</th>
             <th>BO</th>
             <th>Remarks</th>
-            <th>Approval</th>
+            <th>Record Information</th>
             <th>Action</th>   
             </thead>
             <tbody>
@@ -70,11 +70,27 @@
 
 
 <script>
-    $('#nurseryFeedingChartModalFeedingMethod').on('change',function(){
+
+
+    $('.decimalNumbersOnly').keyup(function () {
+        if (this.value !== this.value.replace(/[^0-9\.]/g, '')) {
+            this.value = this.value.replace(/[^0-9\.]/g, '');
+        }
+    });
+
+
+    $('.singleNumbersOnly').keyup(function () {
+        if (this.value !== this.value.replace(/[^0-9]/g, '')) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+    });
+
+
+    $('#nurseryFeedingChartModalFeedingMethod').on('change', function () {
         var jenissusu = $(this).val();
-        if(jenissusu==="01"){
+        if (jenissusu === "Breast feed") {
             $('#susupower').hide();
-        }else{
+        } else {
             $('#susupower').show();
         }
     });
@@ -209,6 +225,10 @@
         // Function for Table Start 
         function NurseryFeedingChartTableFiter(viewData) {
 
+
+            $('<div class="loading">Loading</div>').appendTo('body');
+
+
             var data = {
                 dataString: viewData,
                 methodName: "view"
@@ -281,6 +301,10 @@
             $('#nurseryFeedingChartModal_btnAdd_or_btnUpdate_div').html('<button type="button" class="btn btn-success btn-block btn-lg" id="nurseryFeedingChartAddModalBtn" role="button">Add Items</button>');
 
             $('#nurseryFeedingChartModalForm')[0].reset();
+            var harini = new Date();
+            var hariniyangtelahconvert = ("0" + harini.getDate()).slice(-2) + "/" + ("0" + (harini.getMonth() + 1)).slice(-2) + "/" + harini.getFullYear();
+            $('#nurseryFeedingChartModalDate').val(hariniyangtelahconvert);
+            $('#susupower').show();
 
 //            $("#nurseryFeedingChartModalDate").datepicker({
 //                changeMonth: true,
@@ -437,13 +461,13 @@
             $('#nurseryFeedingChartModalDate').val(arrayData[5]);
             $('#nurseryFeedingChartModalTime').val(newTi);
 
-            
+
             $('#nurseryFeedingChartModalFeedingMethod').val(arrayData[7]);
             var jenissusu = arrayData[7];
-            if(jenissusu==="01"){
+            if (jenissusu === "01") {
                 $('#susupower').hide();
                 $('#nurseryFeedingChartModalMilkStrength').val("-");
-            }else{
+            } else {
                 $('#susupower').show();
                 $('#nurseryFeedingChartModalMilkStrength').val(arrayData[6]);
             }

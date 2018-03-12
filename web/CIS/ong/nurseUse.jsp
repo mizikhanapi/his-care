@@ -41,7 +41,7 @@
     <div class="row" >
         <div class="col-md-12" >
             <div id="tableChartNursingUseMasterDiv" class="clear-patient">
-                <h5>Nursing Use Master Chart</h5>
+                <h5>Nursing Master Chart</h5>
                 <div class="table-guling">
                     <table class="table table-bordered" id="tableChartNursingUseMasterTable" style="width: 100%">
                         <thead>
@@ -50,7 +50,7 @@
                                 <th>Range</th>
                                 <th>Drug Details</th>
                                 <th>Supply</th>
-                                <th>Approval</th>
+                                <th>Record Information</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -85,6 +85,20 @@
 
 
 <script>
+
+    $('.decimalNumbersOnly').keyup(function () {
+        if (this.value !== this.value.replace(/[^0-9\.]/g, '')) {
+            this.value = this.value.replace(/[^0-9\.]/g, '');
+        }
+    });
+
+
+    $('.singleNumbersOnly').keyup(function () {
+        if (this.value !== this.value.replace(/[^0-9]/g, '')) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+    });
+
 
     $(document).ready(function () {
 
@@ -228,6 +242,10 @@
 
         // Function for Table Start 
         function ChartNursingUseTableFiter(viewData) {
+
+
+            $('<div class="loading">Loading</div>').appendTo('body');
+
 
             var data = {
                 dataString: viewData,
@@ -402,6 +420,18 @@
             } else if (time === null || time === "") {
 
                 bootbox.alert("Please Insert Assessment Time !!");
+
+                removeRestrictionForModal();
+
+            } else if (startDate === null || startDate === "") {
+
+                bootbox.alert("Please Insert Start Date !!");
+
+                removeRestrictionForModal();
+
+            } else if (endDate === null || endDate === "") {
+
+                bootbox.alert("Please Insert End Date !!");
 
                 removeRestrictionForModal();
 
@@ -1017,6 +1047,11 @@
 
             $('#nurseryUseDetailChartModalForm')[0].reset();
 
+            $('#nurseryUseDetailChartModalDetailDate').prop('disabled', false);
+            $('#nurseryUseDetailChartModalDetailTime').prop('disabled', false);
+            $('#nurseryUseDetailChartModalDetailDate').prop('readonly', true);
+            $('#nurseryUseDetailChartModalDetailTime').prop('readonly', true);
+
             var arrayData = detailsDataMasterForView.split('|');
 
             $('#nurseryUseDetailChartModalMasterDate').val(arrayData[4]);
@@ -1141,6 +1176,9 @@
             $('#nurseryUseDetailChartModal_btnAdd_or_btnUpdate_div').html('<button type="button" class="btn btn-success btn-block btn-lg" id="nurseryUseDetailChartUpdateModalBtn" role="button">Update Items</button>');
 
             document.getElementById("nurseryUseDetailChartModalForm").reset();
+
+            $('#nurseryUseDetailChartModalDetailDate').prop('disabled', true);
+            $('#nurseryUseDetailChartModalDetailTime').prop('disabled', true);
 
 
             //get the row value

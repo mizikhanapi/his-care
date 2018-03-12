@@ -17,15 +17,15 @@
 <%
     String user_type = (String) session.getAttribute("USER_TYPE");
     if (user_type.equals("PUBLIC")) {
-                String P_NAME = session.getAttribute("USER_NAME").toString();
-                    String PMI_NO = session.getAttribute("PMI_NO").toString();
-                    String P_EMAIL = session.getAttribute("EMAIL").toString();
-                    String P_MOBILE_PHONE = session.getAttribute("MOBILE_PHONE").toString();
-                    
+        String P_NAME = session.getAttribute("USER_NAME").toString();
+        String PMI_NO = session.getAttribute("PMI_NO").toString();
+        String P_EMAIL = session.getAttribute("EMAIL").toString();
+        String P_MOBILE_PHONE = session.getAttribute("MOBILE_PHONE").toString();
+
 %>
 <html>
-<%@include file="header.jsp"%>
-<%@include file="assets/header.html"%>
+    <%@include file="header.jsp"%>
+    <%@include file="assets/header.html"%>
 
     <body>
         <jsp:include page="main/SideMenuPatient.jsp"/>
@@ -47,16 +47,16 @@
                                     <jsp:include page="main/ViewHoliday.jsp"/>
 
                                 </div>
-                                    <div id="viewclinicday" class="tab-pane">
-                                        <jsp:include page="main/ViewClinicDay.jsp"/>
-                                    </div>
-                                        <div id="doctorDirectory" class="tab-pane fade">
-                                            <jsp:include page="main/DoctorAvailability.jsp"/>
-                                        </div>
-                                            <div id="addAppointment" class="tab-pane active " >
-                                                <jsp:include page="main/MakeAppointment.jsp"/>
-                                            </div>
-                
+                                <div id="viewclinicday" class="tab-pane">
+                                    <jsp:include page="main/ViewClinicDay.jsp"/>
+                                </div>
+                                <div id="doctorDirectory" class="tab-pane fade">
+                                    <jsp:include page="main/DoctorAvailability.jsp"/>
+                                </div>
+                                <div id="addAppointment" class="tab-pane active " >
+                                    <jsp:include page="main/MakeAppointment.jsp"/>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -70,29 +70,28 @@
             </div>
 
         </div> 
-        <%
-     
+    </body>
+</html>
+<%        } else {
+    Conn Conn = new Conn();
+    String discipline_name = null;
+    String subdiscipline_name = null;
+    String username = (String) session.getAttribute("USER_ID");
+    String my_1_gamba = session.getAttribute("PICTURE").toString();
 
-    } else {
-        Conn Conn = new Conn();
-        String discipline_name = null;
-        String subdiscipline_name = null;
-        String username = (String) session.getAttribute("USER_ID");
-        String my_1_gamba = session.getAttribute("PICTURE").toString();
+    String hfc = (String) session.getAttribute("HEALTH_FACILITY_CODE");
+    String hfc_name = (String) session.getAttribute("HFC_NAME");
+    String name = (String) session.getAttribute("USER_NAME");
+    String title = (String) session.getAttribute("OCCUPATION_CODE");
+    String discipline = (String) session.getAttribute("DISCIPLINE_CODE");
+    String subdiscipline = (String) session.getAttribute("SUB_DISCIPLINE_CODE");
 
-        String hfc = (String) session.getAttribute("HEALTH_FACILITY_CODE");
-        String hfc_name = (String) session.getAttribute("HFC_NAME");
-        String name = (String) session.getAttribute("USER_NAME");
-        String title = (String) session.getAttribute("OCCUPATION_CODE");
-        String discipline = (String) session.getAttribute("DISCIPLINE_CODE");
-        String subdiscipline = (String) session.getAttribute("SUB_DISCIPLINE_CODE");
-
-        String discipline_name_sql = "SELECT discipline_name FROM adm_discipline WHERE discipline_cd = '" + discipline + "' AND discipline_hfc_cd = '" + hfc + "';";
-        ArrayList<ArrayList<String>> discipline_name_AL = Conn.getData(discipline_name_sql);
-        discipline_name = discipline_name_AL.get(0).get(0);
-        String subdiscipline_name_sql = "SELECT subdiscipline_name FROM adm_subdiscipline WHERE subdiscipline_hfc_cd = '" + hfc + "' AND discipline_cd = '" + discipline + "' AND subdiscipline_cd = '" + subdiscipline + "'";
-        ArrayList<ArrayList<String>> subdiscipline_name_AL = Conn.getData(subdiscipline_name_sql);
-        subdiscipline_name = subdiscipline_name_AL.get(0).get(0);
+    String discipline_name_sql = "SELECT discipline_name FROM adm_discipline WHERE discipline_cd = '" + discipline + "' AND discipline_hfc_cd = '" + hfc + "';";
+    ArrayList<ArrayList<String>> discipline_name_AL = Conn.getData(discipline_name_sql);
+    discipline_name = discipline_name_AL.get(0).get(0);
+    String subdiscipline_name_sql = "SELECT subdiscipline_name FROM adm_subdiscipline WHERE subdiscipline_hfc_cd = '" + hfc + "' AND discipline_cd = '" + discipline + "' AND subdiscipline_cd = '" + subdiscipline + "'";
+    ArrayList<ArrayList<String>> subdiscipline_name_AL = Conn.getData(subdiscipline_name_sql);
+    subdiscipline_name = subdiscipline_name_AL.get(0).get(0);
 
 
 %>
@@ -265,7 +264,7 @@
                         timeout: 10000,
                         success: function (result) {
                             if (result.trim() === 'success') {
-                                $('#maintainStaffLeave').load('adminAppointmentAjax.jsp #maintainStaffLeave');
+                                $('#maintainStaffLeave').load('index.jsp #maintainStaffLeave');
                                 alert('Successfully disapproved this staff leave application');
                             } else if (result.trim() === 'notallow') {
                                 alert('You are not allow to disapprove leave for yourself as you are admin. Please ask other admin to do so');
@@ -310,7 +309,7 @@
                         success: function (result) {
                             if (result.trim() === 'success') {
                                 alert('Successfully approved this staff leave application');
-                                $('#maintainStaffLeave').load('adminAppointmentAjax.jsp #maintainStaffLeave');
+                                $('#maintainStaffLeave').load('index.jsp #maintainStaffLeave');
                             } else if (result.trim() === 'nodata') {
                                 alert('data not exist');
                             } else if (result.trim() === 'notallow') {
@@ -329,7 +328,7 @@
 
 
 
-                
+
 
                 $('#cancelClinicDay').click(function (e) {
                     e.preventDefault();
@@ -352,8 +351,7 @@
 
                 $('#updateClinicDay').click(function (e) {
                     e.preventDefault();
-                    var starttimeClinic = ConvertTimeformat('24', $('#startdateC').val());
-                    var endtimeClinic = ConvertTimeformat('24', $('#enddateC').val());
+
 
                     var _state = $('#state_').val();
                     var _hfc = $('#hfc_codeC').val();
@@ -368,37 +366,61 @@
                     var _endtime = endtimeClinic;
                     var _status = $('#status').val();
 
-                    var uClinicData = {
-                        state: _state,
-                        hfcCode: _hfc,
-                        hfcBefore: _hfcBefore,
-                        discipline: _discipline,
-                        disciplineBefore: _disBefore,
-                        subdiscipline: _subdiscipline,
-                        subdisciplineBefore: _subdisBefore,
-                        clinicDay: _clinicDay,
-                        starttime: _starttime,
-                        endtime: _endtime,
-                        daybefore: _dayBefore,
-                        status: _status
-                    };
+                    if (_state === "") {
+                        alert("Please select state");
+                    } else if (_hfc === "") {
+                        alert("Please select hfc");
+                    } else if (_discipline === "") {
+                        alert("Please select discipline");
+                    } else if (_subdiscipline === "") {
+                        alert("Please select subdiscipline");
+                    } else if (_clinicDay === "") {
+                        alert("Please select clinic day");
+                    } else if ($('#startdateC').val() === "") {
+                        alert("Please select start time");
+                    } else if ($('#enddateC').val() === "") {
+                        alert("Please select end time");
+                    } else if (_status === "") {
+                        alert("Please select clinic status");
+                    } else {
+                        var starttimeClinic = ConvertTimeformat('24', $('#startdateC').val());
+                        var endtimeClinic = ConvertTimeformat('24', $('#enddateC').val());
+                        var uClinicData = {
+                            state: _state,
+                            hfcCode: _hfc,
+                            hfcBefore: _hfcBefore,
+                            discipline: _discipline,
+                            disciplineBefore: _disBefore,
+                            subdiscipline: _subdiscipline,
+                            subdisciplineBefore: _subdisBefore,
+                            clinicDay: _clinicDay,
+                            starttime: starttimeClinic,
+                            endtime: endtimeClinic,
+                            daybefore: _dayBefore,
+                            status: _status
+                        };
 
-                    $.ajax({
-                        url: 'updateClinicDayAjax.jsp',
-                        method: 'post',
-                        data: uClinicData,
-                        timeout: 10000,
-                        success: function (result) {
-                            console.log(result);
-                            if (result.trim() === 'success') {
-                                alert('Clinic day updated');
-                                $('#clinicDayTable').load('adminAppointmentAjax.jsp #clinicDayTable');
-                            } else {
-                                alert('Error');
+                        console.log(uClinicData);
+
+                        $.ajax({
+                            url: 'updateClinicDayAjax.jsp',
+                            method: 'post',
+                            data: uClinicData,
+                            timeout: 10000,
+                            success: function (result) {
+                                console.log(result);
+                                if (result.trim() === 'success') {
+                                    alert('Clinic day updated');
+                                    $('#clinicDayTable').load('index.jsp #clinicDayTable');
+                                } else {
+                                    alert('Error');
+                                }
                             }
-                        }
-                    });
-                    console.log(uClinicData);
+                        });
+                    }
+
+
+
                 });
 
                 $('#clinicDayTable').on('click', '.clinic-editBtn', function (e) {
@@ -458,8 +480,9 @@
                 $('#addClinicDay').click(function (e) {
                     e.preventDefault();
 
-                    var starttimeClinic = ConvertTimeformat('24', $('#startdateC').val());
-                    var endtimeClinic = ConvertTimeformat('24', $('#enddateC').val());
+
+
+
 
                     var _state = $('#state_').val();
                     var _hfc = $('#hfc_codeC').val();
@@ -470,49 +493,73 @@
                     var _endTime = endtimeClinic;
                     var _clinicStatus = $('#status').val();
 
-
-                    var dataC = {
-                        state: _state,
-                        hfc: _hfc,
-                        discipline: _discipline,
-                        subdiscipline: _subdiscipline,
-                        clinic: _clinicDay,
-                        startTime: _startTime,
-                        endTime: _endTime,
-                        status: _clinicStatus
-                    };
-                    console.log(dataC);
-                    $.ajax({
-                        url: 'addClinicDay.jsp',
-                        method: 'post',
-                        timeout: 10000,
-                        data: dataC,
-                        success: function (result) {
-                            var resultTrim = result.replace(";", "");
-                            var response = resultTrim.trim();
-                            if (response === "success") {
-                                alert('Clinic Day added');
-                                $('#clinicDayTable').load('adminAppointmentAjax.jsp #clinicDayTable');
-                                $('#state_').val('');
-                                $('#hfc_codeC').val('');
-                                $('#hfcBefore').val('');
-                                $('#discipline').val('');
-                                $('#disciplineBefore').val('');
-                                $('#subdisciplineBefore').val('');
-                                $('#subdiscipline').val('');
-                                $('#clinicDay').val('');
-                                $('#dayBefore').val('');
-                                $('#startdateC').val('');
-                                $('#enddateC').val('');
-                                $('#status').val('');
-                            } else {
-                                alert('error');
+                    if (_state === "") {
+                        alert("Please select state");
+                    } else if (_hfc === "") {
+                        alert("Please select hfc");
+                    } else if (_discipline === "") {
+                        alert("Please select discipline");
+                    } else if (_subdiscipline === "") {
+                        alert("Please select subdiscipline");
+                    } else if (_clinicDay === "") {
+                        alert("Please select clinic day");
+                    } else if ($('#startdateC').val() === "") {
+                        alert("Please select start time");
+                    } else if ($('#enddateC').val() === "") {
+                        alert("Please select end time");
+                    } else if (_clinicStatus === "") {
+                        alert("Please select clinic status");
+                    } else {
+                        var starttimeClinic = ConvertTimeformat('24', $('#startdateC').val());
+                        var endtimeClinic = ConvertTimeformat('24', $('#enddateC').val());
+                        var dataC = {
+                            state: _state,
+                            hfc: _hfc,
+                            discipline: _discipline,
+                            subdiscipline: _subdiscipline,
+                            clinic: _clinicDay,
+                            startTime: starttimeClinic,
+                            endTime: endtimeClinic,
+                            status: _clinicStatus
+                        };
+                        console.log(dataC);
+                        $.ajax({
+                            url: 'addClinicDay.jsp',
+                            method: 'post',
+                            timeout: 10000,
+                            data: dataC,
+                            dataType: 'json',
+                            success: function (result) {
+//                                var resultTrim = result.replace(";", "");
+//                                var response = resultTrim.trim();
+                                if (result.valid) {
+                                    alert('Clinic Day added');
+                                    $('#clinicDayTable').load('main/MaintainClinicDay.jsp #clinicDayTable');
+                                    $('#state_').val('');
+                                    $('#hfc_codeC').val('');
+                                    $('#hfcBefore').val('');
+                                    $('#discipline').val('');
+                                    $('#disciplineBefore').val('');
+                                    $('#subdisciplineBefore').val('');
+                                    $('#subdiscipline').val('');
+                                    $('#clinicDay').val('');
+                                    $('#dayBefore').val('');
+                                    $('#startdateC').val('');
+                                    $('#enddateC').val('');
+                                    $('#status').val('');
+                                } else {
+                                    alert(result.msg);
+                                    //console.log(response);
+                                }
+                            },
+                            error: function (jsd, ksjs, err) {
+                                alert("Error: " + err);
                             }
-                        },
-                        error: function (err) {
-                            alert('Ajax error');
-                        }
-                    });
+                        });
+
+                    }
+
+
                 });
 
 
@@ -580,8 +627,8 @@
                             var response = resultTrim.trim();
                             if (response === 'success') {
                                 alert('Holiday has successful update');
-                                $('#holidayTable').load('adminAppointmentAjax.jsp #holidayTable');
-                                $('#viewHoliday').load('adminAppointmentAjax.jsp #viewHoliday');
+                                $('#holidayTable').load('index.jsp #holidayTable');
+                                $('#viewHoliday').load('index.jsp #viewHoliday');
                             } else if (response === 'fail') {
                                 alert('Update holiday fail due to the holiday data does not exist');
                             } else if (response === 'notSuccess') {
@@ -608,44 +655,56 @@
                     var _desc = $('#desc').val();
                     var _appTo = $('#appTo').val();
 
-                    _date = _date.split('/');
-                    _date = _date[2] + "-" + _date[1] + "-" + _date[0];
+                    if (_state === "") {
+                        alert("Please select the state");
+                    } else if (_date === "") {
+                        alert("Please select the holiday date");
+                    } else if (_desc === "") {
+                        alert("Please select the description");
+                    } else if (_appTo === "") {
+                        alert("Please select the applicable to");
+                    } else {
+                        _date = _date.split('/');
+                        _date = _date[2] + "-" + _date[1] + "-" + _date[0];
 
-                    var data = {
-                        state: _state,
-                        date: _date,
-                        desc: _desc,
-                        appTo: _appTo
-                    };
+                        var data = {
+                            state: _state,
+                            date: _date,
+                            desc: _desc,
+                            appTo: _appTo
+                        };
 
-                    $.ajax({
-                        url: 'addHolidayAjax.jsp',
-                        type: 'post',
-                        data: data,
-                        cache: false,
-                        timeout: 10000,
-                        success: function (result) {
-                            console.log(result);
-                            result = result.trim();
-                            if (result === "success") {
-                                alert('Holiday successful added');
-                                $('#holidayTable').load('adminAppointmentAjax.jsp #holidayTable');
-                                $('#viewHoliday').load('adminAppointmentAjax.jsp #viewHoliday');
-                                $('#state').val("");
-                                $('#startdate').datepicker().val("");
-                                $('#desc').val("");
-                                $('#appTo').val("");
-                            } else if (result === "error")
-                            {
-                                alert('The Holiday already added');
-                            } else {
-                                alert('error');
+                        $.ajax({
+                            url: 'addHolidayAjax.jsp',
+                            type: 'post',
+                            data: data,
+                            cache: false,
+                            timeout: 10000,
+                            success: function (result) {
+                                console.log(result);
+                                result = result.trim();
+                                if (result === "success") {
+                                    alert('Holiday successful added');
+                                    $('#holidayTable').load('index.jsp #holidayTable');
+                                    $('#viewHoliday').load('index.jsp #viewHoliday');
+                                    $('#state').val("");
+                                    $('#startdate').datepicker().val("");
+                                    $('#desc').val("");
+                                    $('#appTo').val("");
+                                } else if (result === "error")
+                                {
+                                    alert('The Holiday already added');
+                                } else {
+                                    alert('error');
+                                }
+                            },
+                            error: function (err) {
+                                console.log(err);
                             }
-                        },
-                        error: function (err) {
-                            console.log(err);
-                        }
-                    });
+                        });
+                    }
+
+
                 });
 
 

@@ -1,5 +1,6 @@
 var gambarURI2 = "";
 var ext = "";
+
 $(document).ready(function () {
     
     $(function () {
@@ -63,11 +64,7 @@ $(document).ready(function () {
         } else {
             pminotemp = $("#PMIpminotemp").val();
         }
-
-
-
-
-
+        
         if (poic === "") {
             poic = "-";
         } else {
@@ -313,8 +310,8 @@ $(document).ready(function () {
 
             }, error: function (xhr) {
                 //alert("There is an error!");
-                var err = eval("(" + xhr.responseText + ")");
-                alert(err.Message);
+//                var err = eval("(" + xhr.responseText + ")");
+//                alert(err.Message);
             }
         });
     }
@@ -369,6 +366,8 @@ $(document).ready(function () {
             bootbox.alert("Please key in patient's Payer Group..");
         } else if (pperty === null) {
             bootbox.alert("Please key in patient's Person Type..");
+        } else if (pmino === "") {
+            bootbox.alert("Pleace use the search function to generate the pmino before registering/saving patient biodata..");
         } else {
             bootbox.confirm({
                 message: "Are you sure want to Save patient's biodata?",
@@ -513,3 +512,5 @@ function loadImageFileAsURL2()
         $('#dym2').html("");
     }
 }
+
+

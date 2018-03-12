@@ -5,7 +5,7 @@
 <%
     if (session.getAttribute("USER_ID") != null && session.getAttribute("HEALTH_FACILITY_CODE") != null && session.getAttribute("ROLE_CODE") != null) {
 
-        response.sendRedirect("dashboard.jsp");
+        response.sendRedirect("Home");
 
         return;
     }
@@ -34,76 +34,164 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="../assets/css/care.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" type="image/png" href="../assets/favicon.png"/>
         <style>
-            body {
-                background: #f6f8f8;
-            }
-            .login-box{
-                margin-bottom: 5em;
-                margin-top: 5em;
-                max-width: 50em;
+            html, body, .login_container {
+                height: 100%;
             }
 
-            .login-logo {
-                height: auto;
-                max-width: 100%;
+            .login_container {
+                display: table;
             }
 
-            .login-btn {
-                min-width: 18.75em;
+            .login_row {
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            .login_panel {
+                margin: 0 auto;
+                position: relative;
+                width: 320px;
+            }
+
+            .login_logo {
+                margin: 50px 0 30px;
+            }
+
+            .login_logo img {
+                width: 220px;
+            }
+
+            .login_colon {
+                position: absolute;
+                right: -20px;
+                top: 20px;
+            }
+
+            .login_colon img {
+                width: 40px;
+            }
+
+            .login_body {
+                padding: 15px 70px 50px; 
+            }
+
+            .login_msg {
+                text-align: left;
+                margin-bottom: 30px;
+                width: 100%;
+            }
+
+            .login_label {
+                font-family: 'proxima_nova_ltthin';
+            }
+
+            .login_input {
+                border: none;
+                border-bottom: solid 1px #4a4a4a;
+                border-radius: 0px;
+                padding: 6px 0 6px;
+                box-shadow: none;
+                outline: none;
+            }
+
+            .login_input:focus {
+                border: none;
+                border-bottom: solid 2px #5fc095;
+                box-shadow: none;
+                outline: none;
+            }
+
+            .login_alert {
+                color: #F44336;
+                font-size: 12px;
+                text-align: left;
+                margin-top: -10px;
+            }
+
+            .login_btn_rounded {
+                background-color: #05d8dd;
+                border-radius: 2em;
+                border: none;
+                margin-top: 30px;
+            }
+
+            .login_btn_rounded:hover, .login_btn_rounded:focus {
+                background-color: #03babe;
+                border-radius: 2em;
+                border: none;
+            }
+
+            .login_btn_check {
+                background-color: #00ff99;
+                margin-top: 50px;
+            }
+
+            .login_btn_check:focus, .login_btn_check:hover {
+                background-color: #00c778;
+                margin-top: 50px;
+            }
+
+            .login_problem {
+                margin: 10px 0 -20px;
+            }
+
+            .login_problem a {
+                color: #010128;
+                font-family: 'proxima_nova_ltthin';
+            }
+
+            .login_banner {
+                background: url(../assets/img/login-banner.jpg);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
             }
         </style>
         <script>
             history.forward();
         </script>
     </head>
-    <body class="hold-transition login-page">
-        <div class="container login-box">
-            <div class="row">
-                <div class="col-md-4 text-center">
+    <body class="">
+        <div class="login_container col-md-4">
+            <div class="login_row panel login_panel">
+                <div class="login_logo text-center">
                     <img class="login-logo" src="../assets/img/hiscare-icon.svg"/>
                 </div>
-                <div class="col-md-8">
-                    <div class="g-b g-b--m--4of6">
-                        <h1 class="m-b-0"><b>Sign In</b></h1>
-                        <p class="">
-                            Don't have HIS-Care account?
-                            <a class="link link--underline" href="">Create a free account</a>
-                        </p>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form id="leForm" class="form-horizontal ">
-                                    <div class="form-group">
-                                        <div class="col-md-12"><label class="control-label" for="company_name">User ID</label></div>
-                                        <div class="col-md-12">
-                                            <input id="inputUserID" type="text" class="form-control input-lg" name="inputUserID" >
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12"><label class="control-label" for="company_name">Password</label></div>
-                                        <div class="col-md-12">
-                                            <input id="inputPassword" type="password" class="form-control input-lg" name="inputPassword" >
-                                            <a href="#"> forgot your password?</a>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="m-t-10">
-                                    <div class="text-center">
-                                        <button id="btnSign" class="btn btn-rounded btn-mkag btn-lg login-btn">Sign In</button>
+                <div class="panel-body login_body">
+                    <form id="leForm" class="form-horizontal ">
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-md-12"><label class="control-label" for="company_name">User ID</label></div>
+                                <div class="col-md-12">
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user"></i></span>
+                                        <input id="inputUserID" type="text" class="form-control input-lg" name="inputUserID" >
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
+                            <div class="form-group">
+                                <div class="col-md-12"><label class="control-label" for="company_name">Password</label></div>
+                                <div class="col-md-12">
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-key"></i></span>
+                                        <input id="inputPassword" type="password" class="form-control input-lg" name="inputPassword" >
+                                    </div>
+                                    <a href="Forgot_Password"> Forgot your password?</a>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <button id="btnSign" class="btn btn-rounded btn-block btn-mkag btn-lg login-btn">Enter<i style="margin-top: 3px;" class="fa fa-caret-right pull-right"></i></button>
+                    <div class="text-center login-footer">
+                        <p>Powered by <a href="http://mkagtechnologies.com" target="_blank">MKAG Technologies PLT</a></p>
+                        <p>Version 4.0.0</p>
                     </div>
                 </div>
-
-            </div>
-            <div class="text-center login-footer">
-                <p>Version 3.1.0</p>
-                <p>Powered by MKAG Technologies PLT</p>
             </div>
         </div>
+        <div class="col-md-8 login_banner" style="height: 100%"></div>
 
 
         <script>

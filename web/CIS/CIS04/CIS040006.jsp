@@ -20,7 +20,7 @@
                         </li>
                         <li id="POS_History" >
                             <a href="#procedureOrder2" data-toggle="tab">
-                                Drug Procedure History</a>
+                                Procedure Order History</a>
                         </li>
                     </ul>
                 </div>
@@ -213,4 +213,4 @@
 </div>
 <!--End add Procedure-->
 
-<script src="jsFunction/CIS040006.js" type="text/javascript"></script>
+<script src="jsFunction/CIS040006.js?v=1" type="text/javascript"></script>

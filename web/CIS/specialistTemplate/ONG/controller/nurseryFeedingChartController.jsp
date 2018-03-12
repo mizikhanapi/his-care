@@ -28,11 +28,11 @@
     Boolean result;
 
     if (methodName.equalsIgnoreCase("add")) {
-         result = feeding.addNurseryFeeding(data + longString);
-         out.print(result);
+        result = feeding.addNurseryFeeding(data + longString);
+        out.print(result);
     } else if (methodName.equalsIgnoreCase("update")) {
-         result = feeding.updateNurseryFeeding(data);
-         out.print(result);
+        result = feeding.updateNurseryFeeding(data);
+        out.print(result);
     } else if (methodName.equalsIgnoreCase("approve")) {
         result = feeding.approveNurseryFeeding(data + longString);
         out.print(result);
@@ -50,15 +50,15 @@
         <thead>
         <th>Date</th>
         <th>Time</th>
-        <th>Strength of Milk</th>
         <th>Method of Feeding</th>
+        <th>Strength of Milk (ML)</th>
         <th>Aspirate Vomit</th>
         <th>Temperature</th>
         <th>Respiration</th>
         <th>PU</th>
         <th>BO</th>
         <th>Remarks</th>
-        <th>Doctor Approval</th>
+        <th>Record Information</th>
         <th>Status</th>
         <th>Action</th>
         </thead>
@@ -68,15 +68,21 @@
         <input id="dataNurseryFeedingCharthidden" type="hidden" value="<%=String.join("|", datas.get(i))%>">
         <td><%=datas.get(i).get(5)%></td>                   <!-- Date -->
         <td><%=datas.get(i).get(4)%></td>                   <!-- Time -->
-        <td><%=datas.get(i).get(6)%></td>                   <!-- Strength -->
         <td><%=datas.get(i).get(7)%></td>                   <!-- Method -->
+        <td><%=datas.get(i).get(6)%></td>                   <!-- Strength -->
         <td><%=datas.get(i).get(8)%></td>                   <!-- Aspirate -->
         <td><%=datas.get(i).get(9)%></td>                   <!-- Temperature -->                                                             <!-- Pulse Left -->  
         <td><%=datas.get(i).get(10)%></td>                   <!-- Respiration -->                                                             <!-- Pulse Left -->  
         <td><%=datas.get(i).get(11)%></td>                   <!-- PU -->                                                             <!-- Pulse Left -->  
         <td><%=datas.get(i).get(12)%></td>                  <!-- BO -->
         <td><%=datas.get(i).get(13)%></td>                  <!-- Remarks -->
-        <td><%=datas.get(i).get(17)%></td>                  <!-- Approved By -->
+        <td>
+            <strong>Created By</strong><br><!-- Created By -->
+            <%=datas.get(i).get(18)%>
+            <br><br>
+            <strong>Approved By</strong><br><!-- Approved By -->
+            <%=datas.get(i).get(17)%>
+        </td>   
         <td>
             <%
                 if (datas.get(i).get(15).equalsIgnoreCase("pending")) { %>
@@ -109,14 +115,18 @@
 
 </div>
 <script>
+    
     $('#tableNurseryFeedingChartTable').DataTable({
         "paging": true,
         "lengthChange": false,
         "pageLength": 4,
         "language": {
             "emptyTable": "No Record Available To Display"
+        }, initComplete: function (settings, json) {
+            $('.loading').hide();
         }
     });
+    
 </script>
 
 <% }%>

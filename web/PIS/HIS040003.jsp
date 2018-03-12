@@ -14,8 +14,7 @@
 <%@include file="../Entrance/validateSession.jsp" %>
 <%@include file="validateModuleAccess.jsp" %>
 
-<%
-    Config.getFile_url(session);
+<%    Config.getFile_url(session);
     Config.getBase_url(request);
 %>
 
@@ -32,7 +31,7 @@
     </head>
 
     <body>
-
+        <input value="<%=leModuleCode%>" id="mainModuleCodeForGeberalPagesUsage" type="hidden">
         <div class="container-fluid">
             <div class="row">       
 
@@ -47,61 +46,7 @@
                     <%@include file = "libraries/pharmacyTopMenus.jsp" %>
                     <!-- menu top -->
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="thumbnail">
-
-
-                                <!-- Tab Menu -->
-                                <div class="tabbable-panel">
-                                    <div class="tabbable-line">
-                                        <ul class="nav nav-tabs ">
-                                            <li class="active">
-                                                <a href="#tab_default_1" data-toggle="tab">
-                                                    DRUG INVOICE</a>
-                                            </li>
-                                            <li>
-                                                <a href="#tab_default_2" data-toggle="tab">
-                                                    NEW DELIVERY ORDER </a>
-                                            </li>
-                                        </ul>
-
-                                        <!-- tab content -->
-                                        <div class="tab-content">
-
-                                            <div class="tab-pane active" id="tab_default_1">
-                                                
-                                                <div id="InvoiceTopContentMaster">
-                                                </div>
-                                                <%@include file="deleveryInvoiceModal.jsp" %>
-                                                
-                                            </div>
-                                            <div class="tab-pane" id="tab_default_2">
-                                                <h3 style="margin: 0px;">New Order</h3>
-                                                <hr class="pemisah" />
-
-                                                <div id="deleveryOrderTopContent">
-                                                </div>
-
-                                                <hr class="pemisah" />
-
-                                                <div id="deleveryOrderBottomContent">
-                                                </div>
-                                                <%@include file="deleveryOrderModal.jsp" %>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Tab Menu -->
-
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- End Panel -->
-
+                    <%@include file = "../GNL/manageStockQuantity/manageStockQuantityMainPage.jsp" %>
 
                 </div>
                 <!-- main -->		
@@ -116,18 +61,6 @@
         <%@include file = "libraries/pharmacyFootLibrary.jsp" %>
         <!-- Placed at the end of the document so the pages load faster -->
 
-        <script>
-
-            $('<div class="loading">Loading</div>').appendTo('body');
-
-            $(document).ready(function () {
-                $("#InvoiceTopContentMaster").load("deleveryInvoiceMasterTable.jsp");
-                $("#deleveryOrderTopContent").load("deleveryOrderBasic.jsp");
-                $("#deleveryOrderBottomContent").load("deleveryOrderTable.jsp");
-            });
-
-
-        </script>
 
     </body>
 
