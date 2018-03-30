@@ -55,56 +55,36 @@
     SimpleDateFormat formate = new SimpleDateFormat("a");
 
     %></p>
-<p style="text-align: right; position: absolute; top: 37px; left: 30px; color: #666; display: block; font-weight: 500; font-size: 40px; ">
-    <span style="display: block; font-size: 26px; letter-spacing: .14em; margin-bottom: -10px; font-weight: 300;"><%out.print(tarikh.format(datenow));%></span>
-    <%out.print(masa.format(datenow));%>&nbsp;<%out.print(formate.format(datenow));%>
-</p>
-<table class="table table-hover" style="text-transform: uppercase; font-weight: 500; margin-top:-30px; overflow-y: scroll;" id="callerTable">
-
-    <tbody>
-        <%            if (d.size() > 0) {
-                for (int i = 0; i < d.size(); i++) {
-                    String cs_id = d.get(i).get(0);
-                    String number = d.get(i).get(4);
-                    int cs_callingtime = Integer.parseInt(number);
-        %>
-        <tr>
-            <td style="text-align: left; font-weight: 400; width: 5%; font-size:12px;">
-
-                <strong><span id="qno_<%=i%>" style="    
-                              background: #a0ef5f;
-                              padding: 5px 10px;
-                              margin-right: 30px;
-                              font-weight: 500;
-                              color: #fff; font-size: 80px;"><%=d.get(i).get(2)%></span></strong></td>
-            <td style="text-align: left; font-weight: 400; padding: 30px 0; font-size: 81px;color: #999999;"><span id="name_<%=i%>"><strong><%=d.get(i).get(1)%></strong></span></td>
-            <td style="text-align: right;">
-                <p style="margin-bottom: 3px; font-weight: 400;">Room No</p>
-                <span style="    
-                      font-weight: 500;
-                      color: #333; font-size: 80px;color: #999999;" id="qname_<%=i%>"><%=d.get(i).get(5)%></span>
-                <%
-                    String myString = d.get(i).get(2);
-                %>
-                <div id="view_VS">
-
-                </div>
-            </td>
-            <td>
-                <input type="hidden" value="<%=d.get(i).get(0)%>" id="idCaller">
-                <button class="btn btn-danger" id="delCaller">X</button>
-
-            </td>
-        </tr>
-        <%
-                }
+<div id="callerTable">
+    <%            if (d.size() > 0) {
+            for (int i = 0; i < d.size(); i++) {
+                String cs_id = d.get(i).get(0);
+                String number = d.get(i).get(4);
+                int cs_callingtime = Integer.parseInt(number);
+    %>
+    <div class="queue-no" style="font-size: 72px;text-align: center;color: #696969;margin: 20px 0;">
+        <h3 style="font-size: 20px;margin: 10px 0 0;">Queue No.</h3>
+        <h1 id="qno_<%=i%>" style="font-size: 100%;margin: 0px;"><%=d.get(i).get(2)%></h1>
+        <dt id="name_<%=i%>" style="font-size: 15px;">(<%=d.get(i).get(1)%>)</dt>
+        <h4 style="font-size: 20px;/* color: #f5707a; */margin: 0px;">Room No: <span id="qname_<%=i%>" style=""><%=d.get(i).get(5)%></span></h4>
+            <%
+                String myString = d.get(i).get(2);
+            %>
+        <div id="view_VS"></div>
+        <div>
+            <input type="hidden" value="<%=d.get(i).get(0)%>" id="idCaller">
+            <button class="btn btn-danger" id="delCaller"><i class="fa fa-times"></i></button>
+        </div>
+    </div>  
+    <%
             }
-        %>
-    </tbody>
-</table>
+        }
+    %>
+</div>
+
 <script>
     $('#callerTable #delCaller').on('click', function () {
-        var row = $(this).closest('tr');
+        var row = $(this).closest('.queue-no');
         var idCaller = row.find('#idCaller').val();
         console.log(idCaller);
         bootbox.confirm({
@@ -123,7 +103,7 @@
                 //if true go to PMI page
                 if (result === true) {
 
-                    
+
                     $.ajax({
                         type: "post",
                         url: "delCaller.jsp",

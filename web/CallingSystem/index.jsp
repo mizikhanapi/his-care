@@ -75,105 +75,75 @@
     div#papar table>tbody>tr>td{
         border-top: 1px solid #ddd;
     }
+
+   
 </style>
 <!-- header -->
 
 <!-- menu top -->
-<%@include file = "libraries/topMenus-dashboard.html" %>
+<%//@include file = "libraries/topMenus-dashboard.html" %>
 <!-- menu top -->
 
 <div class="container-fluid m-scene">
-    <div class="row">       
-
-        <!-- main -->		
-        <div class="col-md-12 main-dashboard" style="background: #f2f4f8;">
-
-            <div class="row">
-                <div class="col-md-12">
-
-                    <div class="thumbnail" style="padding: 30px 0px; padding: 30px 0px;height: 90vh;overflow: hidden;">
-                        <div class="logo-hfc">
-                            <img src="<%=mysqlhfc_cd.get(0).get(1)%>" /> 
-                        </div>
-                        <div class="nav navbar-nav dashboard" style="display: block; top: 30px;">
-                            <div style=" display: block; font-size: 22px; text-align: center;">
-                                <span style="font-size: 22px; font-weight: 300;"><i class="fa fa-hospital-o fa-lg" style="color: #999; font-size: 45px;"></i></span>
-                            </div>
-                        </div>
-                        <h2 style="font-weight: 300; text-transform: uppercase; margin-top: 50px; padding:0px 30px; text-align: center;">
-                            Welcome to <span style="font-weight: 500; color: #2196f3;"><%= namaHfc%></span>
-                            <ul id="menu-content" class="soap-content nav" style="float: right;">
-                                <li data-toggle="collapse" data-target="#filter" class="soap-select collapsed" aria-expanded="false">
-                                    <i class="fa fa-ellipsis-v fa-lg filter" style="cursor: pointer; color: #ccc; float: right;"></i>                                    
-                                </li>
-                            </ul>
-                        </h2>
-
-
-                        <input type="text" id="hfccd" name="hfccd" value="<%=hfccd1%>" style=" display: none;"> 
-                        <input type="text" id="lng" name="lng" value="test" style=" display: none;"> 
-                        <hr class="pemisah" />
-                        <ul class="collapse" id="filter" aria-expanded="false" style="height: 0px; padding-left: 0px;">
-                            <a class="pull-right settingCalling" data-toggle="modal" data-target="#callingSetting" title="Settings" style="padding-right: 30px;color: #999;"><i class="fa fa-cog fa-lg"></i></a>
-                            <div class="form-horizontal">
-
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="selectbasic">Search Discipline</label>
-                                    <div class="col-md-4">
-                                        <select id="discp" class="form-control">
-                                            <option value="">-- Select discipline --</option>
-                                            <%
-                                                if (sql_discipline.size() > 0) {
-                                                    for (int i = 0; i < sql_discipline.size(); i++) {
-
-                                            %>
-                                            <option value="<%=sql_discipline.get(i).get(0)%>"><%=sql_discipline.get(i).get(1)%></option>
-                                            <%}
-                                                }%>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group" id="divSubDis">
-                                    <label class="col-md-4 control-label" for="selectbasic">Search Sub-Discipline</label>
-                                    <div class="col-md-4" id="divSelectSub">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <button class="btn btn-success" id="tapis"><i class="fa fa-filter"></i>&nbsp; Filter</button>
-                                <button class="btn btn-default" id="clear">Clear</button>
-                            </div>
-                            <hr class="pemisah" />
-                        </ul>
-
-                        <div id="papar">
-                            <p>.. Preparing ...</p>
-
-                        </div>
-                            <hr class="pemisah" />
-                        <div id="papar2">
-
-
-                        </div>
-
-                    </div>
-
+    <div class="row">
+        <div class="col-md-12" style="height: 120px;">
+            <img src="<%=mysqlhfc_cd.get(0).get(1)%>" style="margin-bottom: 15px; margin-top:15px; width: 160px;" />
+            <input type="text" id="hfccd" name="hfccd" value="<%=hfccd1%>" style=" display: none;"> 
+            <input type="text" id="lng" name="lng" value="test" style=" display: none;"> 
+            <div class="sticky-container">
+                <div class="button-container">
+                    <a class="settingCalling" data-toggle="modal" data-target="#callingSetting" title="Settings"><i class="fa fa-cog"></i></a>
                 </div>
             </div>
         </div>
-        <!-- main -->
-
     </div>
+    <div class="row">
+        <div id="papar2" class="col-md-3"></div>
+        <div id="papar" class="col-md-9">
+            <p>.. Preparing ...</p>
+        </div>
+    </div>
+    <!-- main -->
+
+
 </div>
-<div class="modal fade" id="callingSetting" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="callingSetting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times fa-lg"></i></button>
-                <h3 class="modal-title" id="lineModalLabel">Setting</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Calling Settings</h4>
             </div>
             <div class="modal-body">
-                <!-- content goes here -->
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="selectbasic">Search Discipline</label>
+                        <div class="col-md-4">
+                            <select id="discp" class="form-control">
+                                <option value="">-- Select discipline --</option>
+                                <%
+                                    if (sql_discipline.size() > 0) {
+                                        for (int i = 0; i < sql_discipline.size(); i++) {
+
+                                %>
+                                <option value="<%=sql_discipline.get(i).get(0)%>"><%=sql_discipline.get(i).get(1)%></option>
+                                <%}
+                                    }%>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="divSubDis">
+                        <label class="col-md-4 control-label" for="selectbasic">Search Sub-Discipline</label>
+                        <div class="col-md-4" id="divSelectSub">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-success" id="tapis"><i class="fa fa-filter"></i>&nbsp; Filter</button>
+                    <button class="btn btn-default" id="clear">Clear</button>
+                </div>
+                <hr class="pemisah" />
                 <form>
 
                     <div class="row">
@@ -237,9 +207,6 @@
                     </div>
 
                 </form>
-            </div>
-
-            <div class="modal-footer">
                 <div class="btn-group btn-group-justified" role="group" aria-label="group button">
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-success btn-block btn-lg" id="acceptSettingBtn" role="button">Save</button>
@@ -290,7 +257,7 @@
             success: function (data) {
                 $("#papar").html(data);
                 var t = setTimeout("ulangPanggil('" + hfccd + "', '" + discp + "', '" + subdi + "', '" + lang + "', '" + initial + "')", 9000);
-                
+
             },
             error: function (err) {
                 $("#papar").html("Error viewing data!");
@@ -332,7 +299,7 @@
     %>
         ulangPanggil('<%=hfccd1%>', '<%=discp1%>', '<%=subdi1%>', '<%=lang1%>', '<%=initial1%>');
         ulangPanggil2('<%=hfccd1%>', '<%=discp1%>', '<%=subdi1%>', '<%=lang1%>', '<%=initial1%>');
-        
+
     <%
         } catch (Exception e2) {
         }
