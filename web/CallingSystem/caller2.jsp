@@ -62,18 +62,18 @@
                 String number = d.get(i).get(4);
                 int cs_callingtime = Integer.parseInt(number);
     %>
-    <div class="queue-no" style="font-size: 72px;text-align: center;color: #696969;margin: 20px 0;">
+    <div class="calling-queueNo">
         <h3 style="font-size: 20px;margin: 10px 0 0;">Queue No.</h3>
         <h1 id="qno_<%=i%>" style="font-size: 100%;margin: 0px;"><%=d.get(i).get(2)%></h1>
         <dt id="name_<%=i%>" style="font-size: 15px;">(<%=d.get(i).get(1)%>)</dt>
-        <h4 style="font-size: 20px;/* color: #f5707a; */margin: 0px;">Room No: <span id="qname_<%=i%>" style=""><%=d.get(i).get(5)%></span></h4>
-            <%
-                String myString = d.get(i).get(2);
-            %>
+        <h4 style="font-size: 20px;margin: 0px;">Room No: <span id="qname_<%=i%>"><%=d.get(i).get(5)%></span></h4>
+        <%
+              String myString = d.get(i).get(2);
+        %>
         <div id="view_VS"></div>
         <div>
             <input type="hidden" value="<%=d.get(i).get(0)%>" id="idCaller">
-            <button class="btn btn-danger" id="delCaller"><i class="fa fa-times"></i></button>
+            <button class="btn btn-link" id="delCaller"><i class="fa fa-times"></i></button>
         </div>
     </div>  
     <%

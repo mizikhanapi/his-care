@@ -55,26 +55,27 @@
     SimpleDateFormat formate = new SimpleDateFormat("a");
 
     %></p>
-<p style="text-align: right; position: fixed; top: 20px; right: 30px; color: #666; display: block; font-weight: 500; font-size: 40px; ">
+<p style="text-align: right; position: fixed; top: 20px; right: 30px; color: #666; display: none; font-weight: 500; font-size: 40px; ">
     <span style="display: block; font-size: 26px; letter-spacing: .14em; margin-bottom: -10px; font-weight: 300;"><%out.print(tarikh.format(datenow));%></span>
     <%out.print(masa.format(datenow));%>&nbsp;<%out.print(formate.format(datenow));%>
 </p>
 
-<div class="thumbnail bg-logo" id="callerTable" style="min-height: 76vh;">
+<div id="callerTable">
     <%            if (d.size() > 0) {
             for (int i = 0; i < d.size(); i++) {
                 String cs_id = d.get(i).get(0);
                 String number = d.get(i).get(4);
                 int cs_callingtime = Integer.parseInt(number);
     %>
-    <div class="queue-no" style="font-size: 265px;text-align: center;">
-        <h2 style="font-size: 50px;">Queue No.</h2>
-        <h1 id="qno_<%=i%>" style="font-size: 110px;color: #f5707a;"><%=d.get(i).get(2)%></h1>
-        <dt id="name_<%=i%>" style="font-size: 40px;">(<%=d.get(i).get(1)%>)</dt>
-        <h4 id="qname_<%=i%>" style="font-size: 40px;/* color: #f5707a; */">Room No: <span id="qname_<%=i%>" style="color: #f5707a;"><%=d.get(i).get(5)%></span></h4>
-            <%
-                String myString = d.get(i).get(2);
-            %>
+
+    <div class="calling-queueNo active">
+        <h3 style="font-size: 20px;margin: 10px 0 0;">Queue No.</h3>
+        <h1 class="q-pantone" id="qno_<%=i%>" style="font-size: 100%;margin: 0px;"><%=d.get(i).get(2)%></h1>
+        <dt id="name_<%=i%>" style="font-size: 15px;">(<%=d.get(i).get(1)%>)</dt>
+        <h4 style="font-size: 20px;margin: 0px;">Room No: <span class="q-pantone" id="qname_<%=i%>"><%=d.get(i).get(5)%></span></h4>
+        <%
+            String myString = d.get(i).get(2);
+        %>
         <div id="view_VS"></div>
         <% //String LNG = request.getParameter("LNG");
 
@@ -160,7 +161,7 @@
         %>
         <div>
             <input type="hidden" value="<%=d.get(i).get(0)%>" id="idCaller">
-            <button class="btn btn-danger" id="delCaller"><i class="fa fa-times"></i></button>
+            <button class="btn btn-link" id="delCaller"><i class="fa fa-times"></i></button>
         </div>
     </div>
     <%

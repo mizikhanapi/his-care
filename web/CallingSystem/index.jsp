@@ -64,6 +64,9 @@
 <!-- header -->
 <%@include file = "../assets/header.html" %>
 <style>
+    html, body {
+        height: 100%;
+    }
     div#papar table>tbody>tr>td:first-child {
         padding-left: 30px;
     }
@@ -75,38 +78,60 @@
     div#papar table>tbody>tr>td{
         border-top: 1px solid #ddd;
     }
-
-   
 </style>
 <!-- header -->
 
 <!-- menu top -->
 <%//@include file = "libraries/topMenus-dashboard.html" %>
 <!-- menu top -->
-
-<div class="container-fluid m-scene">
-    <div class="row">
-        <div class="col-md-12" style="height: 120px;">
-            <img src="<%=mysqlhfc_cd.get(0).get(1)%>" style="margin-bottom: 15px; margin-top:15px; width: 160px;" />
-            <input type="text" id="hfccd" name="hfccd" value="<%=hfccd1%>" style=" display: none;"> 
-            <input type="text" id="lng" name="lng" value="test" style=" display: none;"> 
-            <div class="sticky-container">
-                <div class="button-container">
-                    <a class="settingCalling" data-toggle="modal" data-target="#callingSetting" title="Settings"><i class="fa fa-cog"></i></a>
+<div class="sticky-container">
+    <div class="button-container">
+        <a href="../Entrance/dashboard.jsp" title="Back to Dashboard"><i class="fa fa-home"></i></a>
+        <br/>
+        <a class="settingCalling" data-toggle="modal" data-target="#callingSetting" title="Settings"><i class="fa fa-cog"></i></a>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row" style="display: table; height: 100%; width: 100%;">
+        <div class="col-lg-3 calling-queueSection">
+            <div class="text-center">
+                <img src="<%=mysqlhfc_cd.get(0).get(1)%>" style="margin-bottom: 15px; margin-top:15px; width: 160px;" />
+                <input type="text" id="hfccd" name="hfccd" value="<%=hfccd1%>" style=" display: none;"> 
+                <input type="text" id="lng" name="lng" value="test" style=" display: none;">
+            </div>
+            <div id="papar"></div>
+            <div id="papar2"></div>
+        </div>
+        <div class="col-lg-9" style="display: table-cell;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="calling-dateTime">
+                        <p style="text-align: right; color: #666; display: block; font-weight: 700; font-size: 45px;margin-top: 10px;margin-bottom: 0px; ">
+                            <span style="display: block; font-size: 34px; margin-bottom: -10px; font-weight: 300;">02/04/2018</span>
+                            03:00 PM
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="calling-panel">
+                        <h1>Synth.&nbsp;<span>24.May</span></h1>
+                        <p>Retro occupy organic, stumptown shabby chic pour-over roof party DIY normcore. Actually artisan organic occupy, Wes Anderson ugh whatever pour-over gastropub selvage. </p>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="calling-panel">
+                        <h1>Bushwick&nbsp;<span>23.May</span></h1>
+                        <p>Retro occupy organic, stumptown shabby chic pour-over roof party DIY normcore.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div id="papar2" class="col-md-3"></div>
-        <div id="papar" class="col-md-9">
-            <p>.. Preparing ...</p>
-        </div>
-    </div>
-    <!-- main -->
 
-
+    </div>    
 </div>
+
 <div class="modal fade" id="callingSetting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
