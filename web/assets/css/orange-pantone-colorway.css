@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {font-family:'Source Sans Pro', sans-serif !important;fon
 .tabbable-line > .nav-tabs > li.active{position:relative;}
 .tabbable-line > .nav-tabs > li.active > a {border: 0 !important; color: #fe5d39 !important; font-weight: 600; }
 .tabbable-line > .nav-tabs > li.active > a > i{color:#fe5d39;}
-.cis-menu>li>a{font-family: 'Source Sans Pro' !important; font-size:14px;color:#36404a;font-weight:600;text-transform:uppercase;}
+.cis-menu>li>a{font-family: 'Source Sans Pro' !important; font-size:14px;color:#36404a;font-weight:600;text-transform:uppercase;cursor: pointer;}
 .cis-menu>li>a:hover{background-color:#fff !important;transition:.35s ease-in-out !important;color:#fe5d39 !important;font-weight:600 !important;}
 ul.soap-content a{float:left;border:1px solid #ddd;padding:5px 14px;margin:4px;border-radius:2em;display:inline-block;overflow:hidden;font-weight:700;color:#666;}
 ul.soap-content>li>a:hover{background:#fe5d39;border:1px solid #fe5d39;color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.26);transition:.35s ease-in-out;}

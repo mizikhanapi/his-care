@@ -63,35 +63,44 @@
                     <%@ include file ="libraries/reportTopMenus-dashboard.html" %>
                     <!-- menu top -->
 
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <div class="thumbnail">
-                                <div id="ALGraph"></div>
-                            </div>
-                        </div>
-
-                    </div>
-
 
                     <div class="row">
                         <div class="col-md-12">
-
-                            <div class="thumbnail" style="margin-bottom: 5px;">
-                                <div class="text-center h3" style="margin: 0;">
+                                <div class="h3" style="margin-bottom: 30px;">
                                     Statistic of <span id="REP_statTitle"></span> 
                                     <span class="pull-right" >
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"></i></a>
+									  <ul class="dropdown-menu">
+									  <li class="dropdown-header">OUTPATIENT REGISTRATION</li>
+										<li><a href="UTeMAttendanceListReport.jsp">Patient Attendance List</a></li>
+                                        <li><a href="UTeMMedicalCertificateReport.jsp">Medical Certificate List</a></li>
+										<li role="separator" class="divider"></li>
+										<li class="dropdown-header">PATIENT CONSULTATION</li>
+										<li><a href="mcMain2.jsp">Reprint MC</a></li>
+                                        <li><a href="medicalReportMain.jsp">Reprint Medical Report</a></li>
+                                        <li><a href="timeSlipMain.jsp">Reprint Time Slip</a></li>
+										<li role="separator" class="divider"></li>
+										<li class="dropdown-header">PHARMACY INFO SYSTEM</li>
+										<li><a href="psMain.jsp">Prescription Slip</a></li>
+                                        <li><a href="dsMain.jsp">Dispensing Sheet</a></li>
+										<li role="separator" class="divider"></li>
+										<li class="dropdown-header">SYSTEM ADMINISTRATOR</li>
+										<li><a href="dataAnalysisMain.jsp">Data Analysis</a></li>
+                                        <li><a href="ICD10Main.jsp">ICD10 </a></li>
+                                        <li><a href="laporanKosPerubatan.jsp">Report Health Cost </a></li>
+                                        <li><a href="drugOrderList.jsp">Total Drug Cost </a></li>
+									  </ul>
+									  &nbsp;
                                         <a id="REP_btnRefresh" title="Refresh the statistic.">
                                             <i class="fa fa-refresh"></i>  
                                         </a>
+										&nbsp;
                                         <a id="REP_btnSetModal" title="Set statistic period.">
                                             <i class="fa fa-cog"></i>  
                                         </a>                                       
                                     </span>
                                 </div>
-                            </div>
                         </div>
-
                     </div>
 
                     <div class="row">
@@ -132,109 +141,33 @@
 
 
                     <div class="row">
-                        <div class="col-md-12">
                             <div class="col-md-4">
                                 <div class="thumbnail" id="MM_stat_icd10" >
                                     <img src="img/ajax-loader.gif">
                                 </div>
-
                             </div>
-
                             <div class="col-md-4">
                                 <div class="thumbnail" id="MM_stat_complaint" >
                                     <img src="img/ajax-loader.gif">
                                 </div>
                             </div>
-
                             <div class="col-md-4">
                                 <div class="thumbnail" id="MM_stat_drug" >
                                     <img src="img/ajax-loader.gif">
                                 </div>
                             </div>
-
-                        </div>
                     </div>
 
                     <div class="row">
+                        <div class="col-md-12">
 
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="panel panel-default panel-report">
-                                        <div class="panel-heading">
-                                            Module Reports
-                                        </div>
-                                        <!-- Default panel contents -->
-                                        <div class="panel-heading">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#OUTPATIENT">OUTPATIENT REGISTRATION</a>
-                                            <span class="pull-right panel-collapse-clickable" data-toggle="collapse" data-parent="#accordion" href="#OUTPATIENT">
-                                                <i class="glyphicon glyphicon-chevron-down"></i>
-                                            </span>
-                                        </div>
-                                        <!-- List group -->
-                                        <div id="OUTPATIENT" class="panel-collapse panel-collapse collapse">
-                                            <ul class="list-group">
-                                                <li class="list-group-item"><a href="UTeMAttendanceListReport.jsp">Patient Attendance List</a></li>
-                                                <li class="list-group-item"><a href="UTeMMedicalCertificateReport.jsp">Medical Certificate List</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- Default panel contents -->
-
-                                        <!-- Default panel contents -->
-                                        <div class="panel-heading">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#CONSULTATION">PATIENT CONSULTATION</a>
-                                            <span class="pull-right panel-collapse-clickable" data-toggle="collapse" data-parent="#accordion" href="#CONSULTATION">
-                                                <i class="glyphicon glyphicon-chevron-down"></i>
-                                            </span>
-                                        </div>
-                                        <!-- List group -->
-                                        <div id="CONSULTATION" class="panel-collapse panel-collapse collapse">
-                                            <ul class="list-group">
-                                                <li class="list-group-item"><a href="mcMain2.jsp">Reprint MC</a></li>
-                                                <li class="list-group-item"><a href="medicalReportMain.jsp">Reprint Medical Report</a></li>
-                                                <li class="list-group-item"><a href="timeSlipMain.jsp">Reprint Time Slip</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- Default panel contents -->
-
-                                        <!-- Default panel contents -->
-                                        <div class="panel-heading">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#PHARMACY">PHARMACY INFO SYSTEM</a>
-                                            <span class="pull-right panel-collapse-clickable" data-toggle="collapse" data-parent="#accordion" href="#PHARMACY">
-                                                <i class="glyphicon glyphicon-chevron-down"></i>
-                                            </span>
-                                        </div>
-                                        <!-- List group -->
-                                        <div id="PHARMACY" class="panel-collapse panel-collapse collapse">
-                                            <ul class="list-group">
-                                                <li class="list-group-item"><a href="psMain.jsp">Prescription Slip</a></li>
-                                                <li class="list-group-item"><a href="dsMain.jsp">Dispensing Sheet</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <!-- Default panel contents -->
-                                        <div class="panel-heading">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#ADMINISTRATOR">SYSTEM ADMINISTRATOR</a>
-                                            <span class="pull-right panel-collapse-clickable" data-toggle="collapse" data-parent="#accordion" href="#ADMINISTRATOR">
-                                                <i class="glyphicon glyphicon-chevron-down"></i>
-                                            </span>
-                                        </div>
-                                        <!-- List group -->
-                                        <div id="ADMINISTRATOR" class="panel-collapse panel-collapse collapse">
-                                            <ul class="list-group">
-                                                <li class="list-group-item"><a href="dataAnalysisMain.jsp">Data Analysis</a></li>
-                                                <li class="list-group-item"><a href="ICD10Main.jsp">ICD10 </a></li>
-                                                <li class="list-group-item"><a href="laporanKosPerubatan.jsp">Report Health Cost </a></li>
-                                                <li class="list-group-item"><a href="drugOrderList.jsp">Total Drug Cost </a></li>
-
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </div>
+                            <div class="thumbnail">
+                                <div id="ALGraph"></div>
                             </div>
                         </div>
+
                     </div>
+					
                 </div>
             </div>
         </div>
